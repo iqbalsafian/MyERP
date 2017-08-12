@@ -1,0 +1,8 @@
+{
+  "generator-express-es6": {
+    "promptValues": {
+      "viewEngine": "pug",
+      "cssPreprocessor": "sass"
+    }
+  }
+}

@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@blueprintjs/core": "^1.24.0",
+    "@blueprintjs/docs": "^1.1.1",
+    "classnames": "^2.2.5",
     "react": "^15.6.1",
     "react-addons-css-transition-group": "^15.6.0",
     "react-dom": "^15.6.1",
