@@ -1,36 +1,25 @@
 import React, { Component } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
-import PageNotFound from '../helpers/PageNotFound'
+import { Switch, Route } from 'react-router-dom';
+import PageNotFound from '../helpers/PageNotFound';
+// import { CSSTransitionGroup } from 'react-transition-group';
 
 import Dashboard from '../Dashboard';
 import CustomerList from '../customers/CustomerList';
 import CustomerNew from '../customers/CustomerNew';
+import StaffList from '../humanresource/StaffList';
+import StaffDetails from '../humanresource/StaffDetails';
 
 export default class MainContent extends Component {
   render() {
-    const NotFound = () => (
-      <div className="page-container centeringText" style={{paddingTop:'70px'}}>
-        <div className="bg" style={{ backgroundImage: 'url()'}}></div>
-        <h1 className="title">Page not found</h1>
-        <p >
-
-            Well, this is embarassing. Your request cannot be resolved.
-
-        </p>
-        {
-          setTimeout(function() {
-            return (<Redirect to='/customer' />)
-          }, 500)
-        }
-      </div>
-    )
     return(
       <div style={{paddingTop:'10px'}}>
         <Switch>
           <Route exact path='/' component={Dashboard} />
           <Route exact path='/customer' component={CustomerList} />
           <Route exact path='/customer/new' component={CustomerNew} />
-          <Route path='*' component={PageNotFound} /> 
+          <Route exact path='/hr' component={StaffList} />
+          <Route exact path='/hr/staff-details' component={StaffDetails} />
+          <Route path='*' component={PageNotFound} />
         </Switch>
       </div>
     )

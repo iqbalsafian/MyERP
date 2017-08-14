@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 // import * as Blueprint from "@blueprintjs/core";
 // import './App.css';
-import './unsemantic-grid-responsive.css'
+import './index.css';
+import './unsemantic-grid-responsive.css';
 
 import TopNavigation from './components/navigations/TopNavigation';
 import LeftMenu from './components/navigations/LeftMenu';

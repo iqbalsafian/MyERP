@@ -1,0 +1,62 @@
+@import "@blueprintjs/core";
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  color: white;
+  background-image: url('blur-bg.jpg');
+  width: 100%;
+}
+
+table, thead, tr, td {
+  color: white;
+}
+
+.leftMenuSpan {
+  padding-right: 7px;
+}
+
+ul {
+  list-style-type:none;
+  margin: 0 0 1 0;
+  padding: 0;
+}
+
+li {
+  padding-top: 5px;
+}
+
+.chat {
+  min-height: 400px;
+  height: 100%;
+}
+
+.centeringText {
+  align-items: center;
+  text-align: center;
+}
+
+.page-container .bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  mix-blend-mode: overlay;
+}
+
+.middlingVAlign {
+  vertical-align: middle;
+}
+
+.w3-circle{border-radius:50%}
+
+.contacts{
+  max-height: 20px;
+}
+
+.transparentThis {
+  background-color: rgba(0, 0, 0, 0.2)
+}

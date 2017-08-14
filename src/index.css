@@ -1,34 +1,33 @@
-body {
+@import '../node_modules/@blueprintjs/core/dist/blueprint.css';
+html, body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
   color: white;
-  background-image: url('blur-bg.jpg');
-  width: 100%;
-}
+  background-image: url("blur-bg.jpg");
+  width: 100%; }
+
+table, thead, tr, td {
+  color: white; }
 
 .leftMenuSpan {
-  padding-right: 7px;
-}
+  padding-right: 7px; }
 
 ul {
-  list-style-type:none;
+  list-style-type: none;
   margin: 0 0 1 0;
-  padding: 0;
-}
+  padding: 0; }
 
 li {
-  padding-top: 5px;
-}
+  padding-top: 5px; }
 
 .chat {
   min-height: 400px;
-  height: 100%;
-}
+  height: 100%; }
 
 .centeringText {
-  text-align: center;
-}
+  align-items: center;
+  text-align: center; }
 
 .page-container .bg {
   position: absolute;
@@ -37,15 +36,16 @@ li {
   width: 100vw;
   height: 100vh;
   background-size: cover;
-  mix-blend-mode: overlay;
-}
+  mix-blend-mode: overlay; }
 
 .middlingVAlign {
-  vertical-align: middle;
-}
+  vertical-align: middle; }
 
-.w3-circle{border-radius:50%}
+.w3-circle {
+  border-radius: 50%; }
 
-.contacts{
-  max-height: 20px;
-}
+.contacts {
+  max-height: 20px; }
+
+.transparentThis {
+  background-color: rgba(0, 0, 0, 0.2); }
