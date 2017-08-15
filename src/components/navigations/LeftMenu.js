@@ -33,6 +33,12 @@ class LeftMenu extends Component {
                 </NavLink>
               </li>
               <li>
+                <NavLink to="/hr/leave">
+                  <span className="leftMenuSpan pt-icon-standard pt-icon-home" />
+                  Leave Application
+                </NavLink>
+              </li>
+              <li>
                 <NavLink to="/hr/ab">
                   <span className="leftMenuSpan pt-icon-standard pt-icon-home" />
                   Allowance & Benefits
