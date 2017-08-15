@@ -7,11 +7,22 @@ import StaffDetails from './StaffDetails';
 
 class StaffList extends Component {
   state = {
-    isOpen: false
+    isOpen: false,
+    dialogTitle: 'New Staff'
   }
 
   showStaffDetails(selectedStaff) {
-    this.setState({ isOpen: true })
+    this.setState({
+      dialogTitle: 'Staff Details Information',
+      isOpen: true
+    })
+  }
+
+  newStaff() {
+    this.setState({
+      dialogTitle: 'New Staff',
+      isOpen: true
+    })
   }
 
   toggleOverlay = () => {
@@ -20,13 +31,14 @@ class StaffList extends Component {
 
   render() {
     return(
-      <div className="centeringText">
+      <div>
         Staff List
-        <div className="grid-container centeringText">
+        <Button iconName="plus" onClick={this.newStaff.bind(this)} />
+        <div className="grid-container">
           <div onClick={this.showStaffDetails.bind(this)} className="pt-card pt-elevation-1 pt-interactive transparentThis grid-45" style={{margin:'10px 10px 0px 10px'}}>
             <div className="grid-container">
               <div className="grid-30">
-                <img src=".././REWmEe.jpg" alt="" height="70" width="70" />
+                <img src=".././REWmEe.jpg" alt="" height="60" width="60" />
               </div>
               <div style={{textAlign:'left'}} className="grid-70">
                 <div>
@@ -40,7 +52,7 @@ class StaffList extends Component {
           </div>
         </div>
         <Dialog
-          title="Staff Details"
+          title={this.state.dialogTitle}
           className="pt-dark"
           isOpen={this.state.isOpen}
           onClose={this.toggleOverlay}

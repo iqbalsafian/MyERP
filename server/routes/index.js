@@ -1,6 +1,8 @@
 import express from 'express';
+import authorization from './authorization';
 
 const router = express.Router();
+// router.use('/auth',authorization);
 
 /* GET index page. */
 router.get('/', (req, res, next) => {

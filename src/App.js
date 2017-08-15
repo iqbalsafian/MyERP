@@ -14,8 +14,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        {/* <LoginForm /> */}
-        <div className="grid-container">
+        <LoginForm />
+        {/* <div className="grid-container">
           <div className="grid-100">
             <TopNavigation />
           </div>
@@ -30,7 +30,7 @@ class App extends Component {
           <div className="grid-20">
             <RightMenu />
           </div>
-        </div>
+        </div> */}
       </div>
     );
   }

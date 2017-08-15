@@ -5,7 +5,7 @@ class PageNotFound extends Component {
   callMeBack() {
     setTimeout(() => {
       this.setState({redirect: true})
-    }, 3000)
+    }, 5000)
   }
 
   state = {
@@ -24,7 +24,9 @@ class PageNotFound extends Component {
 
               Well, this is embrassing. The path was not found.
               <br />
-              Redirecting in 5 seconds
+              Redirecting in 5 seconds.
+              <br />
+              Or, It is now safe to turn off your computer.
 
           </p>
           {

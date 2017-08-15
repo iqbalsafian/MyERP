@@ -3,7 +3,14 @@ import { Button, Classes, Intent, Dialog } from "@blueprintjs/core";
 import classNames from 'classnames';
 
 class LoginForm extends Component {
+  constructor() {
+    super();
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.onChange = this.onChange.bind(this)
+  }
   state = {
+    username: '',
+    password: '',
     isLoading: false,
     errors: []
   }
@@ -22,11 +29,16 @@ class LoginForm extends Component {
     }
   }
 
+  onChange(e) {
+    this.setState({[e.target.name]: e.target.value});
+  }
+
   handleSubmit(e) {
     e.preventDefault();
-    if (this.isValid()) {
-      this.setState({ errors: {}, isLoading:true })
-    }
+    console.log(this.state);
+    // if (this.isValid()) {
+    //   this.setState({ errors: {}, isLoading:true })
+    // }
   }
 
   isValid() {
@@ -34,11 +46,10 @@ class LoginForm extends Component {
   }
 
   render() {
-
     return(
-      <div >
-        <div style={this.style.loginBody} className=".pt-ui-text">
-          <div className="pt-card .pt-elevation-4">
+      <form onSubmit={this.handleSubmit}>
+        <div style={this.style.loginBody} className="pt-ui-text">
+          <div className="pt-card .pt-elevation-4 transparentThis">
             <div className="pt-form-group pt-inline">
 
               <div style={this.style.centeringAlignment}>
@@ -46,14 +57,30 @@ class LoginForm extends Component {
                   MyERP
                 </div>
                 <div className={classNames('pt-input-group')}>
-                  <input id="username" name="username" className="pt-input" style={{width: '300px', textAlign: 'center'}} type="text" placeholder="Your username" dir="auto" />
+                  <input
+                    id="username"
+                    name="username"
+                    className="pt-input"
+                    style={{width: '300px', textAlign: 'center'}}
+                    type="text"
+                    placeholder="Your username"
+                    dir="auto"
+                    onChange={this.onChange} />
                 </div>
                 <div className="pt-form-helper-text">use iqbal as username</div>
 
                 <div>&nbsp;</div>
 
                 <div className="pt-input-group">
-                  <input id="password" name="password" className="pt-input" style={{width: '300px', textAlign:'center'}} type="text" placeholder="Your password" dir="auto" />
+                  <input
+                    id="password"
+                    name="password"
+                    type="password"
+                    className="pt-input"
+                    style={{width: '300px', textAlign:'center'}}
+                    placeholder="Your password"
+                    dir="auto"
+                    onChange={this.onChange} />
                 </div>
                 <div className="pt-form-helper-text">enter password as password</div>
 
@@ -88,7 +115,7 @@ class LoginForm extends Component {
                 </div>
             </div>
         </Dialog>
-      </div>
+      </form>
     )
   }
 }
