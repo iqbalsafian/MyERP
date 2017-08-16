@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { userLoginRequest } from '../.././reducers/userProfile';
+import { userLoginRequest } from '../.././actions/userAuthentication';
 import { Button, Classes, Intent, Dialog } from "@blueprintjs/core";
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
 class LoginForm extends Component {
   state = {
-    username: '',
+    email: '',
     password: '',
     isLoading: false,
     errors: []
@@ -46,7 +46,7 @@ class LoginForm extends Component {
     e.preventDefault();
     let errors = {}
 
-    if (this.state.username === '') errors.username = "Username can't be empty";
+    if (this.state.email === '') errors.email = "Email can't be empty";
     if (this.state.password === '') errors.password = "Password can't be empty";
 
     this.setState({ errors });
@@ -54,7 +54,7 @@ class LoginForm extends Component {
 
     //if (isValid) {
     this.props.userLoginRequest({
-      username: this.state.username,
+      email: this.state.email,
       password: this.state.password
     }).then((response) => {
       if (response.retStatus) {
@@ -82,18 +82,18 @@ class LoginForm extends Component {
                 </div>
                 <div className={classNames('pt-input-group')}>
                   <input
-                    id="username"
-                    name="username"
-                    className={classNames('pt-input', {'pt-intent-danger': !!this.state.errors.username})}
+                    id="email"
+                    name="email"
+                    className={classNames('pt-input', {'pt-intent-danger': !!this.state.errors.email})}
                     style={{width: '300px', textAlign: 'center'}}
                     type="text"
-                    placeholder="Your username"
+                    placeholder="Your email"
                     dir="auto"
                     onChange={this.onChange} />
                 </div>
                 <div className="pt-form-helper-text pt-intent-danger">
                   {
-                    this.state.errors.username ? "username is required!" : ""
+                    this.state.errors.email ? "email is required!" : ""
                   }
                 </div>
 

@@ -51,7 +51,7 @@ router.post('/login', (req, res, next) => {
       .tap((staff) => {
         if (staff != null) {
           if (bcrypt.compareSync(password, staff.get('password_digest'))) {
-            const token = jwt.sign({ id: staff.get('id') }, jwtConfig.jwtSecret);
+            const token = jwt.sign({ id: staff.get('id'), email:email }, jwtConfig.jwtSecret);
             res.status(200).json({'statuscode':'200', token});
           } else {
             res.status(303).json({'errors':'Invalid credentials'})

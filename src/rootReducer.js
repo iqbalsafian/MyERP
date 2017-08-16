@@ -1,7 +1,10 @@
 import { combineReducers } from 'redux';
-import userProfile from './reducers/userProfile';
-import selectedStaff from './reducers/selectedStaff';
+// import userAuthentication from './reducers/userAuthentication';
+// import selectedStaff from './reducers/selectedStaff';
+import auth from './reducers/auth';
 
 export default combineReducers({
-  userProfile, selectedStaff
+  auth
+  // userAuthentication,
+  // selectedStaff
 })

@@ -7,6 +7,8 @@
     "@blueprintjs/docs": "^1.1.1",
     "axios": "^0.16.2",
     "classnames": "^2.2.5",
+    "jwt-decode": "^2.2.0",
+    "lodash": "^4.17.4",
     "node-sass-chokidar": "^0.0.3",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
