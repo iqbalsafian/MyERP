@@ -5,6 +5,7 @@
   "dependencies": {
     "@blueprintjs/core": "^1.24.0",
     "@blueprintjs/docs": "^1.1.1",
+    "axios": "^0.16.2",
     "classnames": "^2.2.5",
     "node-sass-chokidar": "^0.0.3",
     "prop-types": "^15.5.10",

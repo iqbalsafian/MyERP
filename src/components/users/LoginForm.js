@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { userLoginRequest } from '../.././reducers/userProfile';
 import { Button, Classes, Intent, Dialog } from "@blueprintjs/core";
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
 class LoginForm extends Component {
-  constructor() {
-    super();
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.onChange = this.onChange.bind(this)
-  }
   state = {
     username: '',
     password: '',
@@ -29,16 +27,42 @@ class LoginForm extends Component {
     }
   }
 
-  onChange(e) {
-    this.setState({[e.target.name]: e.target.value});
+  onChange = (e) => {
+    if (!!this.state.errors[e.target.name]) {
+      let errors = Object.assign({}, this.state.errors);
+      delete errors[e.target.name];
+      this.setState({
+        [e.target.name]: e.target.value,
+        errors
+      });
+    } else {
+      this.setState({
+        [e.target.name]: e.target.value
+      })
+    }
   }
 
-  handleSubmit(e) {
+  handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state);
-    // if (this.isValid()) {
-    //   this.setState({ errors: {}, isLoading:true })
-    // }
+    let errors = {}
+
+    if (this.state.username === '') errors.username = "Username can't be empty";
+    if (this.state.password === '') errors.password = "Password can't be empty";
+
+    this.setState({ errors });
+    const isValid = Object.keys(errors).length === 0
+
+    //if (isValid) {
+    this.props.userLoginRequest({
+      username: this.state.username,
+      password: this.state.password
+    }).then((response) => {
+      if (response.retStatus) {
+        // console.log('ok');
+      } else {
+        this.setState({ errors: response.errors})
+      }
+    })
   }
 
   isValid() {
@@ -60,14 +84,18 @@ class LoginForm extends Component {
                   <input
                     id="username"
                     name="username"
-                    className="pt-input"
+                    className={classNames('pt-input', {'pt-intent-danger': !!this.state.errors.username})}
                     style={{width: '300px', textAlign: 'center'}}
                     type="text"
                     placeholder="Your username"
                     dir="auto"
                     onChange={this.onChange} />
                 </div>
-                <div className="pt-form-helper-text">use iqbal as username</div>
+                <div className="pt-form-helper-text pt-intent-danger">
+                  {
+                    this.state.errors.username ? "username is required!" : ""
+                  }
+                </div>
 
                 <div>&nbsp;</div>
 
@@ -76,13 +104,17 @@ class LoginForm extends Component {
                     id="password"
                     name="password"
                     type="password"
-                    className="pt-input"
+                    className={classNames('pt-input', {'pt-intent-danger': !!this.state.errors.password})}
                     style={{width: '300px', textAlign:'center'}}
                     placeholder="Your password"
                     dir="auto"
                     onChange={this.onChange} />
                 </div>
-                <div className="pt-form-helper-text">enter password as password</div>
+                <div className="pt-form-helper-text pt-intent-danger">
+                  {
+                    this.state.errors.password ? "password is required!" : ""
+                  }
+                </div>
 
                 <div>&nbsp;</div>
                 <div className="pt-input-group" style={{paddingBottom:'20px', textAlign:'center'}}>
@@ -120,4 +152,8 @@ class LoginForm extends Component {
   }
 }
 
-export default LoginForm;
+LoginForm.propTypes = {
+  userLoginRequest: PropTypes.func.isRequired
+}
+
+export default connect((state) => { return {}}, { userLoginRequest })(LoginForm);
