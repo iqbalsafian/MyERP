@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import { Button, Dialog, Intent } from "@blueprintjs/core";
 import StaffDetails from './StaffDetails';
+import { selectedStaffD } from '../../actions/staffInformation';
 
 class StaffList extends Component {
   state = {
@@ -30,6 +31,7 @@ class StaffList extends Component {
   }
 
   render() {
+    // console.log(this.props.selectedStaff);
     return(
       <div>
         Staff List
@@ -59,7 +61,7 @@ class StaffList extends Component {
           style={{width:'800px'}}
           >
             <div className="pt-dialog-body">
-              <StaffDetails selectedStaff={this.props.selectedStaff} />
+              <StaffDetails selectedStaff={this.props.selectedStaffD} />
             </div>
             <div className="pt-dialog-footer">
                 <div className="pt-dialog-footer-actions">
@@ -78,12 +80,12 @@ class StaffList extends Component {
 }
 
 StaffList.propTypes = {
-  selectedStaff: PropTypes.array.isRequired
+  selectedStaffD: PropTypes.object.isRequired
 }
 
 function mapStateToProps(state) {
   return {
-    selectedStaff: state.selectedStaff
+    selectedStaffD: state.selectedStaffD
   }
 }
 

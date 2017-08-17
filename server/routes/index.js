@@ -45,7 +45,8 @@ router.post('/login', (req, res, next) => {
   } else {
     const { email, password } = req.body;
 
-    User
+    setTimeout(() => {
+      User
       .where({email: email})
       .fetch()
       .tap((staff) => {
@@ -61,6 +62,8 @@ router.post('/login', (req, res, next) => {
           res.status(302).json({'errors': 'Invalid credentials'})
         }
       })
+    }, 3000);
+
   }
 
 });

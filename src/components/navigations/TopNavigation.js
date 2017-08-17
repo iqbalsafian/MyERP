@@ -1,7 +1,15 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { logout } from '../../actions/userAuthentication';
 import { Popover, PopoverInteractionKind } from "@blueprintjs/core";
 
-export default class TopNavigation extends Component {
+class TopNavigation extends Component {
+  logout(e) {
+    e.preventDefault();
+    this.props.logout();
+    this.props.reRender();
+  }
   render() {
     return (
       <div style={{ paddingTop: '17px'}}>
@@ -18,7 +26,7 @@ export default class TopNavigation extends Component {
               <Popover
                 content="Logout"
                 interactionKind={PopoverInteractionKind.HOVER}>
-                <button className="pt-button pt-minimal pt-icon-log-out"></button>
+                <button className="pt-button pt-minimal pt-icon-log-out" onClick={this.logout.bind(this)}></button>
               </Popover>
             </div>
           </div>
@@ -27,3 +35,10 @@ export default class TopNavigation extends Component {
     )
   }
 }
+
+TopNavigation.propTypes = {
+  logout: PropTypes.func.isRequired,
+  reRender: PropTypes.func.isRequired
+}
+
+export default connect((state) => { return {} }, {logout})(TopNavigation);

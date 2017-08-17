@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { userLoginRequest } from '../.././actions/userAuthentication';
-import { Button, Classes, Intent, Dialog } from "@blueprintjs/core";
+import { userLoginRequest } from '../../actions/userAuthentication';
+import { Button, Intent, Dialog, Spinner } from "@blueprintjs/core";
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
@@ -10,7 +10,8 @@ class LoginForm extends Component {
     email: '',
     password: '',
     isLoading: false,
-    errors: []
+    errors: [],
+    disabledSubmit: false
   }
 
   style = {
@@ -44,29 +45,23 @@ class LoginForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    this.setState({ disabledSubmit: true });
     let errors = {}
 
     if (this.state.email === '') errors.email = "Email can't be empty";
     if (this.state.password === '') errors.password = "Password can't be empty";
 
     this.setState({ errors });
-    const isValid = Object.keys(errors).length === 0
 
-    //if (isValid) {
     this.props.userLoginRequest({
       email: this.state.email,
       password: this.state.password
     }).then((response) => {
-      if (response.retStatus) {
-        // console.log('ok');
-      } else {
+      if (!response.retStatus) {
         this.setState({ errors: response.errors})
       }
     })
-  }
-
-  isValid() {
-    return true;
+    this.setState({ disabledSubmit: true });
   }
 
   render() {
@@ -115,11 +110,10 @@ class LoginForm extends Component {
                     this.state.errors.password ? "password is required!" : ""
                   }
                 </div>
-
                 <div>&nbsp;</div>
                 <div className="pt-input-group" style={{paddingBottom:'20px', textAlign:'center'}}>
                   <Button
-                    className='.pt-intent-primary'
+                    className={classNames('.pt-intent-primary', {'pt-disabled': this.state.disabledSubmit})}
                     text="Submit" onClick={this.handleSubmit} />
 
                 </div>
@@ -153,7 +147,8 @@ class LoginForm extends Component {
 }
 
 LoginForm.propTypes = {
-  userLoginRequest: PropTypes.func.isRequired
+  userLoginRequest: PropTypes.func.isRequired,
+  reRender: PropTypes.func.isRequired
 }
 
 export default connect((state) => { return {}}, { userLoginRequest })(LoginForm);

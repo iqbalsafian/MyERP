@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { Classes, Menu, MenuDivider, MenuItem } from "@blueprintjs/core";
+import { Classes, Menu, MenuDivider } from "@blueprintjs/core";
 
 class LeftMenu extends Component {
   showMenu(str) {
