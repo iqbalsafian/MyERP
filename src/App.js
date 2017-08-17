@@ -40,7 +40,6 @@ class App extends Component {
       <div>
         <BrowserRouter>
         { isAuthenticated ? authenticatedUserLinks : <LoginForm reRender={() => this.reRender} /> }
-        {/* { authenticatedUserLinks } */}
         </BrowserRouter>
       </div>
     );

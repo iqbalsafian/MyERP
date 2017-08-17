@@ -7,7 +7,7 @@ module.exports = {
     connection: {
       database: 'bis',
       user:     'iqbal',
-      password: 'iqbal007'
+      password: ''
     },
     pool: {
       min: 2,
