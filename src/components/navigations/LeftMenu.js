@@ -71,6 +71,13 @@ class LeftMenu extends Component {
           </NavLink>
         </Menu>
         <Menu className={`docs-inline-example ${Classes.ELEVATION_1}`}>
+          <MenuDivider title="Operations" />
+          <NavLink to="/operations">
+            <span className="leftMenuSpan pt-icon-standard pt-icon-home" />
+            Operations
+          </NavLink>
+        </Menu>
+        <Menu className={`docs-inline-example ${Classes.ELEVATION_1}`}>
           <MenuDivider title="Financial" />
           <NavLink to="/financial">
             <span className="leftMenuSpan pt-icon-standard pt-icon-home" />

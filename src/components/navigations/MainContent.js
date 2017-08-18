@@ -6,13 +6,16 @@ import PageNotFound from '../helpers/PageNotFound';
 import Dashboard from '../Dashboard';
 import CustomerList from '../customers/CustomerList';
 import CustomerNew from '../customers/CustomerNew';
-// import StaffList from '../humanresource/StaffList';
+import StaffList from '../humanresource/StaffList';
 import StaffDetails from '../humanresource/StaffDetails';
 import LeaveApplication from '../humanresource/LeaveApplication';
 import PayAdvice from '../humanresource/PayAdvice';
 import AllowanceAndBenefits from '../humanresource/AllowanceAndBenefits';
 
 export default class MainContent extends Component {
+  state = {
+    isOpen: false
+  }
   render() {
     return(
       <div>
@@ -21,7 +24,7 @@ export default class MainContent extends Component {
             <Route exact path='/' component={Dashboard} />
             <Route exact path='/customer' component={CustomerList} />
             <Route exact path='/customer/new' component={CustomerNew} />
-            {/* <Route exact path='/hr' component={StaffList} /> */}
+            <Route exact path='/hr' component={StaffList} />
             <Route exact path='/hr/leave' component={LeaveApplication} />
             <Route exact path='/hr/staff-details' component={StaffDetails} />
             <Route exact path='/hr/ab' component={AllowanceAndBenefits} />

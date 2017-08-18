@@ -10,6 +10,7 @@ import registerServiceWorker from './registerServiceWorker';
 import setAuthorizationToken from './utils/setAuthorizationToken';
 import jwtDecode from 'jwt-decode';
 import { setCurrentUser } from './actions/userAuthentication';
+import { setDisplayedStaff } from './actions/staffInformation';
 
 const store = createStore(
   rootReducer,
@@ -20,7 +21,8 @@ const store = createStore(
 
 if (localStorage.jwtToken) {
   setAuthorizationToken(localStorage.jwtToken);
-  store.dispatch(setCurrentUser(jwtDecode(localStorage.jwtToken)))
+  store.dispatch(setCurrentUser(jwtDecode(localStorage.jwtToken)));
+  store.dispatch(setDisplayedStaff(localStorage.staffList));
 }
 
 ReactDOM.render(

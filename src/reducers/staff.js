@@ -1,13 +1,13 @@
-import { SET_SELECTED_STAFF } from '../actions/types';
+import { SET_DISPLAYED_STAFF } from '../actions/types';
 
 const initialState = {
-  staff: {}
+  staffList: []
 }
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
-    case SET_SELECTED_STAFF: {
-      return {user: action.user}
+    case SET_DISPLAYED_STAFF: {
+      return { staffList: action.staffList }
     }
     default: return state;
   }

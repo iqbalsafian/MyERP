@@ -38,7 +38,7 @@ function validateInput(data) {
   }
 }
 
-router.post('/login', (req, res, next) => {
+router.post('/api/login', (req, res, next) => {
   const { errors, isValid } = validateInput(req.body);
   if (!isValid) {
     res.status(400).json(errors);
@@ -62,16 +62,16 @@ router.post('/login', (req, res, next) => {
           res.status(302).json({'errors': 'Invalid credentials'})
         }
       })
-    }, 3000);
+    }, 1000);
 
   }
 
 });
 
-router.post('/staff/new', (req, res, next) => {
-  const { username, password } = req.body;
+router.post('/api/staff/new', (req, res, next) => {
+  const { email, password } = req.body;
   new User({
-    email: username,
+    email,
     password_digest: bcrypt.hashSync(password, 13)
   }).save()
   .then((saved) => {
@@ -80,4 +80,12 @@ router.post('/staff/new', (req, res, next) => {
   .catch((errors) => {
     res.status(300).json(errors);
   })
-})
+});
+
+router.get('/api/staff', (req, res, next) => {
+  res.status(200).json([
+    {id: 1, firstName: 'John', lastName: 'Doe', email: 'johnny@imail.com'},
+    {id: 2, firstName: 'Joe', lastName: 'Doe', email: 'joey@imail.com'},
+    {id: 3, firstName: 'Jane', lastName: 'Doe', email: 'jenny@imail.com'}
+  ])
+});

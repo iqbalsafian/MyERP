@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { userLoginRequest } from '../../actions/userAuthentication';
+import { setDisplayedStaff } from '../../actions/staffInformation';
 import { Button, Intent, Dialog, Spinner } from "@blueprintjs/core";
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
@@ -57,6 +58,7 @@ class LoginForm extends Component {
       email: this.state.email,
       password: this.state.password
     }).then((response) => {
+      this.props.setDisplayedStaff();
       if (!response.retStatus) {
         this.setState({ errors: response.errors})
       }
@@ -151,4 +153,4 @@ LoginForm.propTypes = {
   reRender: PropTypes.func.isRequired
 }
 
-export default connect((state) => { return {}}, { userLoginRequest })(LoginForm);
+export default connect((state) => { return {}}, { userLoginRequest, setDisplayedStaff })(LoginForm);

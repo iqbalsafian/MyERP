@@ -13,7 +13,7 @@ export function setCurrentUser(user) {
 export function userLoginRequest(userData) {
   return dispatch => {
     return axios.post(
-      'http://localhost:3003/login',
+      'http://localhost:3003/api/login',
       userData
     ).then((response) => {
       const token = response.data.token;

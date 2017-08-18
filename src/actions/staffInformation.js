@@ -1,18 +1,19 @@
-import { SET_SELECTED_STAFF } from './types';
+import { SET_DISPLAYED_STAFF } from './types';
+import axios from 'axios';
 
-export function setSelectStaff(staff) {
+export function putDisplayedStaff(staffList) {
   return {
-    type: SET_SELECTED_STAFF,
-    staff
-  }
+    type: SET_DISPLAYED_STAFF,
+    staffList
+  };
 }
 
-export function selectedStaff(staff) {
+export function setDisplayedStaff() {
   return dispatch => {
-    dispatch(setSelectStaff({}));
+    return axios.get('http://localhost:3003/api/staff')
+      .then((response) => {
+        localStorage.setItem("staffList", response.data)
+        dispatch(putDisplayedStaff(response.data));
+    })
   }
-}
-
-export function selectedStaffD(staff) {
-  return {};
 }
