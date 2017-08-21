@@ -1,29 +1,45 @@
 import React, { Component } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import { connect } from 'react-redux';
 
-function PersonnelDetails() {
-  return (
-    <div className="grid-container pt-card transparentThis">
-      <div className="grid-50">
-        <div className="grid-container">
-          <div className="grid-30" style={{verticalAlign:'middle'}}>First Name</div>
-          <div className="grid-70">
-            <input className="pt-input .pt-fill" type="text" placeholder="First Name" dir="auto" />
+class PersonnelDetails extends Component {
+  render(){
+    var { staffDetails } = this.props
+    return (
+      <div className="grid-container pt-card transparentThis">
+        <div className="grid-50">
+          <div className="grid-container">
+            <div className="grid-30" style={{verticalAlign:'middle'}}>First Name</div>
+            <div className="grid-70">
+              <input className="pt-input .pt-fill" type="text" placeholder="First Name" dir="auto"
+                value={staffDetails.firstName} />
+            </div>
           </div>
-        </div>
-        <div className="grid-container">
-          <div className="grid-30">Last Name</div>
-          <div className="grid-70">
-            <input className="pt-input .pt-fill" type="text" placeholder="Last Name" dir="auto" />
+          <div className="grid-container">
+            <div className="grid-30">Last Name</div>
+            <div className="grid-70">
+              <input className="pt-input .pt-fill" type="text" placeholder="Last Name"
+                dir="auto"
+                value={staffDetails.lastName} />
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  )
+    )
+  }
 }
 
 class StaffDetails extends Component {
+  componentWillMount() {
+    const { selectedStaff } = this.props
+    this.state = {
+      staffDetails:  selectedStaff,
+      selectedStaffId: selectedStaff.id
+    }
+  }
+
   handleSubmit() {}
+
   render() {
     return(
       <div className="transparentThis">
@@ -37,7 +53,7 @@ class StaffDetails extends Component {
             </TabList>
             <div style={{border:1, marginTop:'-10px'}}>
               <TabPanel>
-                <PersonnelDetails />
+                <PersonnelDetails staffDetails={this.state.staffDetails}  />
               </TabPanel>
               <TabPanel>
               </TabPanel>
@@ -55,4 +71,4 @@ class StaffDetails extends Component {
   }
 }
 
-export default StaffDetails;
+export default connect(null)(StaffDetails);

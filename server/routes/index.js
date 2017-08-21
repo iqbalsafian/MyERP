@@ -82,10 +82,16 @@ router.post('/api/staff/new', (req, res, next) => {
   })
 });
 
+const staffList = [
+  {id: 1, firstName: 'John', lastName: 'Doe', email: 'johnny@imail.com'},
+  {id: 2, firstName: 'Joe', lastName: 'Doe', email: 'joey@imail.com'},
+  {id: 3, firstName: 'Jane', lastName: 'Doe', email: 'jenny@imail.com'}
+];
+
 router.get('/api/staff', (req, res, next) => {
-  res.status(200).json([
-    {id: 1, firstName: 'John', lastName: 'Doe', email: 'johnny@imail.com'},
-    {id: 2, firstName: 'Joe', lastName: 'Doe', email: 'joey@imail.com'},
-    {id: 3, firstName: 'Jane', lastName: 'Doe', email: 'jenny@imail.com'}
-  ])
+  res.status(200).send(staffList)
 });
+
+router.get('/api/staff/:id', (req, res, next) => {
+  res.status(200).json(staffList.filter((staff) => { console.log(staff.id == req.params.id);return staff.id == req.params.id;}))
+})

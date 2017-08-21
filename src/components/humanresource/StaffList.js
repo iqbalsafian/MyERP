@@ -1,21 +1,35 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-
+import { setDisplayedStaff, getStaffById } from '../../actions/staffInformation';
 import { Button, Dialog, Intent } from "@blueprintjs/core";
 import StaffDetails from './StaffDetails';
 
 class StaffList extends Component {
+  constructor(props) {
+    super(props)
+    props.setDisplayedStaff()
+  }
   state = {
     isOpen: false,
-    dialogTitle: 'New Staff'
+    dialogTitle: 'New Staff',
+    selectedStaffId: 0,
+    selectedStaff: {}
   }
 
   showStaffDetails = (staffId) => {
-    const selectedStaff = this.props.staffList.staffList.find(staff => staff.id === staffId);
-    this.setState({
-      dialogTitle: 'Staff Details Information - ' + selectedStaff.firstName,
-      isOpen: true
+    const { id, firstName } = this.props.staffList.staffList.find(staff => staff.id === staffId);
+    getStaffById(staffId)
+      .then(response => {
+        if (response.data[0])
+        {
+          this.setState({
+            dialogTitle: 'Staff Details Information - ' + firstName,
+            selectedStaffId: id,
+            isOpen: true,
+            selectedStaff: response.data[0]
+          })
+        }
     })
   }
 
@@ -30,15 +44,21 @@ class StaffList extends Component {
     this.setState({ isOpen: this.state.isOpen ? false : true })
   }
 
+  componentWillMount() {
+
+  }
+
   render() {
-    const { staffList } = this.props;
+    // console.log(this.props);
+    const { staffList } = this.props.staffList;
     return(
       <div>
         Staff List
         <Button iconName="plus" onClick={this.newStaff.bind(this)} />
         <div className="grid-container">
           {
-            this.props.staffList.staffList.map((staff, key) => {
+            staffList ?
+            staffList.map((staff, key) => {
               return (
                 <div key={key} onClick={() => this.showStaffDetails(staff.id)} className="pt-card pt-elevation-1 pt-interactive transparentThis grid-45" style={{margin:'10px 10px 0px 10px'}}>
                   <div className="grid-container">
@@ -57,6 +77,8 @@ class StaffList extends Component {
                 </div>
               )
             })
+            :
+            ''
           }
         </div>
         <Dialog
@@ -67,7 +89,7 @@ class StaffList extends Component {
           style={{width:'800px'}}
           >
             <div className="pt-dialog-body">
-              <StaffDetails selectedStaff={this.props.selectedStaffD} />
+              <StaffDetails selectedStaff={this.state.selectedStaff} />
             </div>
             <div className="pt-dialog-footer">
                 <div className="pt-dialog-footer-actions">
@@ -86,13 +108,13 @@ class StaffList extends Component {
 }
 
 StaffList.propTypes = {
-  staffList: PropTypes.object.isRequired
+  // staffList: PropTypes.object.isRequired
 }
 
 function mapStateToProps(state) {
   return {
-    staffList: state.staffList
+    staffList: state.staffList ? state.staffList : {}
   }
 }
 
-export default connect(mapStateToProps)(StaffList);
+export default connect(mapStateToProps, { setDisplayedStaff })(StaffList);

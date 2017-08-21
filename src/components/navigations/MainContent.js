@@ -11,17 +11,16 @@ import StaffDetails from '../humanresource/StaffDetails';
 import LeaveApplication from '../humanresource/LeaveApplication';
 import PayAdvice from '../humanresource/PayAdvice';
 import AllowanceAndBenefits from '../humanresource/AllowanceAndBenefits';
+import UserRoles from '../users/UserRoles';
 
 export default class MainContent extends Component {
-  state = {
-    isOpen: false
-  }
   render() {
     return(
       <div>
         <div style={{marginTop:'15px', height:'75vh'}} className="pt-card transparentThis centeringText">
           <Switch>
             <Route exact path='/' component={Dashboard} />
+            <Route exact path="/settings/userroles" component={UserRoles} />
             <Route exact path='/customer' component={CustomerList} />
             <Route exact path='/customer/new' component={CustomerNew} />
             <Route exact path='/hr' component={StaffList} />

@@ -4,10 +4,6 @@ import { NavLink } from 'react-router-dom';
 import { Classes, Menu, MenuDivider } from "@blueprintjs/core";
 
 class LeftMenu extends Component {
-  showMenu(str) {
-    alert('hola')
-  }
-
   render() {
     return(
       <div className="pt-card pt-dark" style={{backgroundColor: 'rgba(0, 0, 0, 0.2)', height: '85vh'}}>
@@ -19,13 +15,18 @@ class LeftMenu extends Component {
               Dashboard
             </NavLink>
             </li>
-            <li>
-            <NavLink to="/settings">
-              <span className="leftMenuSpan pt-icon-standard pt-icon-cog" />
-              Settings
-            </NavLink>
-            </li>
           </ul>
+
+        </Menu>
+        <Menu className={`docs-inline-example ${Classes.ELEVATION_1}`}>
+            <MenuDivider title="Settings" />
+            <ul>
+              <li>
+                <NavLink to="/settings/userroles">
+                  User Roles
+                </NavLink>
+              </li>
+            </ul>
         </Menu>
         <Menu className={`docs-inline-example ${Classes.ELEVATION_1}`}>
             <MenuDivider title="Human Resource" />
