@@ -49,3 +49,15 @@ li {
 
 .transparentThis {
   background-color: rgba(0, 0, 0, 0.2); }
+
+.cursorPointer {
+  cursor: pointer;
+}
+
+li:focus {
+  background-color: #394B59
+}
+
+activeNavLink{
+  background-color: #394B59
+}

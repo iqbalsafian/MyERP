@@ -1,90 +1,63 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+import Accordion from 'react-responsive-accordion';
 
 import { Classes, Menu, MenuDivider } from "@blueprintjs/core";
 
 class LeftMenu extends Component {
   render() {
     return(
-      <div className="pt-card pt-dark" style={{backgroundColor: 'rgba(0, 0, 0, 0.2)', height: '85vh'}}>
-        <Menu className="pt-dark" style={{backgroundColor: 'rgba(0, 0, 0, 0.2)'}}>
-          <ul className="leftMenuUL pt-dark">
-            <li>
-            <NavLink to="/">
-              <span className="leftMenuSpan pt-icon-standard pt-icon-home" />
-              Dashboard
-            </NavLink>
-            </li>
-          </ul>
-
-        </Menu>
-        <Menu className={`docs-inline-example ${Classes.ELEVATION_1}`}>
-            <MenuDivider title="Settings" />
-            <ul>
-              <li>
-                <NavLink to="/settings/userroles">
-                  User Roles
-                </NavLink>
-              </li>
-            </ul>
-        </Menu>
-        <Menu className={`docs-inline-example ${Classes.ELEVATION_1}`}>
-            <MenuDivider title="Human Resource" />
-            <ul>
-              <li>
-                <NavLink to="/hr">
+      <div className="transparentThis" style={{paddingTop:'15px', paddingLeft: '15px', height: '85vh'}}>
+        <Accordion>
+          <div data-trigger="Human Resource">
+            <ul style={{paddingBottom: '10px'}}>
+              <NavLink to="/hr">
+                <li tabIndex="1">
                   <span className="leftMenuSpan pt-icon-standard pt-icon-home" />
                   Staff List
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/hr/leave">
+                </li>
+              </NavLink>
+              <NavLink to="/hr/leave">
+                <li tabIndex="2">
                   <span className="leftMenuSpan pt-icon-standard pt-icon-home" />
                   Leave Application
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/hr/ab">
+                </li>
+              </NavLink>
+              <NavLink to="/hr/ab">
+                <li tabIndex="3">
                   <span className="leftMenuSpan pt-icon-standard pt-icon-home" />
                   Allowance & Benefits
-                </NavLink>
-              </li>
+                </li>
+              </NavLink>
+              <NavLink to="/hr/pa">
+                <li tabIndex="4">
+                    <span className="leftMenuSpan pt-icon-standard pt-icon-home" />
+                    Pay Advice
+                </li>
+              </NavLink>
+            </ul>
+          </div>
+          <div data-trigger="Customer" className="pt-elevation-1">
+            <ul style={{paddingBottom: '10px'}}>
               <li>
-                <NavLink to="/hr/pa">
+                <NavLink to="/customer">
                   <span className="leftMenuSpan pt-icon-standard pt-icon-home" />
-                  Pay Advice
+                  Customer List
                 </NavLink>
               </li>
             </ul>
-        </Menu>
-        <Menu className={`docs-inline-example ${Classes.ELEVATION_1}`}>
-          <MenuDivider title="Customer" />
-          <NavLink to="/customer">
-            <span className="leftMenuSpan pt-icon-standard pt-icon-home" />
-            Customer List
-          </NavLink>
-        </Menu>
-        <Menu className={`docs-inline-example ${Classes.ELEVATION_1}`}>
-          <MenuDivider title="Supplier" />
-          <NavLink to="/supplier">
-            <span className="leftMenuSpan pt-icon-standard pt-icon-home" />
-            Supplier List
-          </NavLink>
-        </Menu>
-        <Menu className={`docs-inline-example ${Classes.ELEVATION_1}`}>
-          <MenuDivider title="Operations" />
-          <NavLink to="/operations">
-            <span className="leftMenuSpan pt-icon-standard pt-icon-home" />
-            Operations
-          </NavLink>
-        </Menu>
-        <Menu className={`docs-inline-example ${Classes.ELEVATION_1}`}>
-          <MenuDivider title="Financial" />
-          <NavLink to="/financial">
-            <span className="leftMenuSpan pt-icon-standard pt-icon-home" />
-            Financial
-          </NavLink>
-        </Menu>
+          </div>
+          <div data-trigger="Supplier" className="pt-elevation-1">
+            <ul style={{paddingBottom: '10px'}}>
+              <li>
+                <NavLink to="/supplier">
+                  <span className="leftMenuSpan pt-icon-standard pt-icon-home" />
+                  Supplier List
+                </NavLink>
+              </li>
+            </ul>
+          </div>
+        </Accordion>
       </div>
     )
   }

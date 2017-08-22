@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { setDisplayedStaff, getStaffById } from '../../actions/staffInformation';
-import { Button, Dialog, Intent } from "@blueprintjs/core";
+import { Button, Dialog, Intent, Hotkey, Hotkeys, HotkeysTarget } from "@blueprintjs/core";
 import StaffDetails from './StaffDetails';
 
 class StaffList extends Component {
@@ -33,7 +33,7 @@ class StaffList extends Component {
     })
   }
 
-  newStaff() {
+  newStaff = () => {
     this.setState({
       dialogTitle: 'New Staff',
       isOpen: true
@@ -45,7 +45,17 @@ class StaffList extends Component {
   }
 
   componentWillMount() {
+  }
 
+  renderHotkeys() {
+    return <Hotkeys>
+      <Hotkey
+        global={true}
+        combo="ctrl + b"
+        label="New Staff"
+        onKeyDown={this.newStaff}
+      />
+    </Hotkeys>
   }
 
   render() {
@@ -54,7 +64,6 @@ class StaffList extends Component {
     return(
       <div>
         Staff List
-        <Button iconName="plus" onClick={this.newStaff.bind(this)} />
         <div className="grid-container">
           {
             staffList ?
@@ -116,5 +125,5 @@ function mapStateToProps(state) {
     staffList: state.staffList ? state.staffList : {}
   }
 }
-
+HotkeysTarget(StaffList)
 export default connect(mapStateToProps, { setDisplayedStaff })(StaffList);
