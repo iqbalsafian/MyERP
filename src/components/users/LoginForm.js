@@ -72,7 +72,6 @@ class LoginForm extends Component {
         <div style={this.style.loginBody} className="pt-ui-text">
           <div className="pt-card .pt-elevation-4 transparentThis">
             <div className="pt-form-group pt-inline">
-
               <div style={this.style.centeringAlignment}>
                 <div style={{paddingBottom:'15px'}}>
                   MyERP

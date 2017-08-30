@@ -11,6 +11,7 @@ import StaffDetails from '../humanresource/StaffDetails';
 import LeaveApplication from '../humanresource/LeaveApplication';
 import PayAdvice from '../humanresource/PayAdvice';
 import AllowanceAndBenefits from '../humanresource/AllowanceAndBenefits';
+import Department from '../humanresource/Department';
 import UserRoles from '../users/UserRoles';
 
 export default class MainContent extends Component {
@@ -25,6 +26,7 @@ export default class MainContent extends Component {
             <Route exact path='/customer/new' component={CustomerNew} />
             <Route exact path='/hr' component={StaffList} />
             <Route exact path='/hr/leave' component={LeaveApplication} />
+            <Route exact path='/hr/department' component={Department} />
             <Route exact path='/hr/staff-details' component={StaffDetails} />
             <Route exact path='/hr/ab' component={AllowanceAndBenefits} />
             <Route exact path='/hr/pa' component={PayAdvice} />

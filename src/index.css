@@ -81,3 +81,8 @@ li:focus {
     cursor: default;
     color: #000000;
 }
+
+.leftMenuSpan {
+  padding-right: 7px;
+  cursor: pointer;
+}

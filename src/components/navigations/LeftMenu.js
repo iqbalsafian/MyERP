@@ -17,6 +17,12 @@ class LeftMenu extends Component {
                   Staff List
                 </li>
               </NavLink>
+              <NavLink to="/hr/department">
+                <li tabIndex="2">
+                  <span className="leftMenuSpan pt-icon-standard pt-icon-home" />
+                  Department
+                </li>
+              </NavLink>
               <NavLink to="/hr/leave">
                 <li tabIndex="2">
                   <span className="leftMenuSpan pt-icon-standard pt-icon-home" />
