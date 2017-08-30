@@ -28,7 +28,7 @@ export default class MainContent extends Component {
             <Route exact path='/hr/staff-details' component={StaffDetails} />
             <Route exact path='/hr/ab' component={AllowanceAndBenefits} />
             <Route exact path='/hr/pa' component={PayAdvice} />
-            <Route path='*' component={PageNotFound} />
+            <Route component={PageNotFound} />
           </Switch>
         </div>
         <div style={{height:'15px'}} className="">

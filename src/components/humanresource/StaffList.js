@@ -51,7 +51,7 @@ class StaffList extends Component {
     return <Hotkeys>
       <Hotkey
         global={true}
-        combo="ctrl + b"
+        combo="mod + b"
         label="New Staff"
         onKeyDown={this.newStaff}
       />
@@ -64,25 +64,29 @@ class StaffList extends Component {
     return(
       <div>
         Staff List
-        <div className="grid-container">
+        <div>
+          <input className="pt-input" type="search" placeholder="Search" dir="auto" style={{marginRight:'15px'}} />
+          <select name="department" id="department" style={{marginRight:'15px'}}>
+            <option value="0">Select department</option>
+          </select>
+          <Button text="Search" />
+        </div>
+        <div className="grid-container" style={{overflow:'auto'}}>
           {
             staffList ?
             staffList.map((staff, key) => {
               return (
-                <div key={key} onClick={() => this.showStaffDetails(staff.id)} className="pt-card pt-elevation-1 pt-interactive transparentThis grid-45" style={{margin:'10px 10px 0px 10px'}}>
-                  <div className="grid-container">
-                    <div className="grid-30">
-                      <img src={require('../../images/REWmEe.jpg')} alt="" height="60" width="60" />
-                    </div>
-                    <div style={{textAlign:'left'}} className="grid-70">
-                      <div>
-                        Name: {staff.firstName}
-                      </div>
-                      <div>
-                        Name: {staff.lastName}
-                      </div>
-                    </div>
+                <div key={key} onClick={() => this.showStaffDetails(staff.id)} className="pt-card pt-elevation-1 pt-interactive transparentThis grid-30 grid-container card-padding" style={{margin:'10px 10px 0px 10px'}}>
+                  <div className="grid-30">
+                    <img src={require('../../images/REWmEe.jpg')} alt="" height="40" width="40" />
                   </div>
+                  <div style={{textAlign:'left'}} className="grid-70">
+                    <div>
+                      {staff.firstName} {staff.lastName}
+                    </div>
+
+                  </div>
+                  <div>Software Developer</div>
                 </div>
               )
             })
@@ -90,12 +94,16 @@ class StaffList extends Component {
             ''
           }
         </div>
+        <div>
+          <Button iconName="plus" text="Add New" />
+          <Button iconName="plus" text="Delete" />
+        </div>
         <Dialog
           title={this.state.dialogTitle}
           className="pt-dark"
           isOpen={this.state.isOpen}
           onClose={this.toggleOverlay}
-          style={{width:'800px'}}
+          style={{width:'850px'}}
           >
             <div className="pt-dialog-body">
               <StaffDetails selectedStaff={this.state.selectedStaff} />

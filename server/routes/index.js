@@ -85,7 +85,13 @@ router.post('/api/staff/new', (req, res, next) => {
 const staffList = [
   {id: 1, firstName: 'John', lastName: 'Doe', email: 'johnny@imail.com'},
   {id: 2, firstName: 'Joe', lastName: 'Doe', email: 'joey@imail.com'},
-  {id: 3, firstName: 'Jane', lastName: 'Doe', email: 'jenny@imail.com'}
+  {id: 3, firstName: 'Jane', lastName: 'Doe', email: 'jenny@imail.com'},
+  {id: 4, firstName: 'Joe', lastName: 'Doe', email: 'joey@imail.com'},
+  {id: 5, firstName: 'Joe', lastName: 'Doe', email: 'joey@imail.com'},
+  {id: 6, firstName: 'Joe', lastName: 'Doe', email: 'joey@imail.com'},
+  {id: 7, firstName: 'Joe', lastName: 'Doe', email: 'joey@imail.com'},
+  {id: 8, firstName: 'Joe', lastName: 'Doe', email: 'joey@imail.com'},
+  {id: 9, firstName: 'Joe', lastName: 'Doe', email: 'joey@imail.com'}
 ];
 
 router.get('/api/staff', (req, res, next) => {
