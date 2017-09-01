@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-// import { Card } from '@blueprintjs/core';
+import { Card } from '@blueprintjs/core';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 
 class RightMenu extends Component {
   render() {
     return(
-      <div className="pt-card chat pt-dark" style={{backgroundColor:'rgba(0,0,0,0.2)', height: '85vh'}}>
-        <Tabs style={{marginTop:'-15px'}}>
+      <div className="chat pt-dark" style={{backgroundColor:'rgba(0,0,0,0.2)', height: '85vh'}}>
+        <Tabs style={{marginTop:'-10px'}}>
           <TabList className="centeringText">
             <Tab>Chats</Tab>
             <Tab>Contacts</Tab>
@@ -32,8 +32,11 @@ class RightMenu extends Component {
 class MainChat extends Component {
   render() {
     return(
-      <div>
-        Main Chat
+      <div style={{margin:'-7px 7px 0 7px'}}>
+        <div className="pt-callout chatBorder">
+        </div>
+        <div className="pt-callout chatBorder">
+        </div>
       </div>
     )
   }

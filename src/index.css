@@ -86,3 +86,7 @@ li:focus {
   padding-right: 7px;
   cursor: pointer;
 }
+
+.chatBorder {
+  border-bottom: thin solid #000000;
+}

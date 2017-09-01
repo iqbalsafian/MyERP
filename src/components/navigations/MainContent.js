@@ -25,9 +25,9 @@ export default class MainContent extends Component {
             <Route exact path='/customer' component={CustomerList} />
             <Route exact path='/customer/new' component={CustomerNew} />
             <Route exact path='/hr' component={StaffList} />
+            <Route exact path='/hr/staff-details/:id' component={StaffDetails} />
             <Route exact path='/hr/leave' component={LeaveApplication} />
             <Route exact path='/hr/department' component={Department} />
-            <Route exact path='/hr/staff-details' component={StaffDetails} />
             <Route exact path='/hr/ab' component={AllowanceAndBenefits} />
             <Route exact path='/hr/pa' component={PayAdvice} />
             <Route component={PageNotFound} />

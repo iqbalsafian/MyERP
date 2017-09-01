@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../actions/userAuthentication';
-import { Popover, PopoverInteractionKind } from "@blueprintjs/core";
+import { Popover, PopoverInteractionKind, Menu, MenuItem } from "@blueprintjs/core";
 
 class TopNavigation extends Component {
   logout(e) {
@@ -10,6 +10,16 @@ class TopNavigation extends Component {
     this.props.logout();
     this.props.reRender();
   }
+
+  showMenu() {
+    return (
+      <Menu>
+        <MenuItem text="Profile"></MenuItem>
+        <MenuItem text="User Roles"></MenuItem>
+      </Menu>
+    )
+  }
+
   render() {
     return (
       <div style={{ paddingTop: '17px'}}>
@@ -22,7 +32,11 @@ class TopNavigation extends Component {
               <span className="pt-navbar-divider"></span>
               <button className="pt-button pt-minimal pt-icon-user"></button>
               <button className="pt-button pt-minimal pt-icon-notifications"></button>
-              <button className="pt-button pt-minimal pt-icon-cog"></button>
+              <Popover
+                content={this.showMenu}
+                interactionKind={PopoverInteractionKind.HOVER}>
+                <button className="pt-button pt-minimal pt-icon-cog" onClick=""></button>
+              </Popover>
               <Popover
                 content="Logout"
                 interactionKind={PopoverInteractionKind.HOVER}>
