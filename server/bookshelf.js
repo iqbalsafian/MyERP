@@ -2,4 +2,6 @@ import knex from 'knex';
 import bookshelf  from 'bookshelf';
 import knexConfig from './knexfile';
 
-export default bookshelf(knex(knexConfig.development));
+var bookshelf1 = bookshelf(knex(knexConfig.development));
+bookshelf1.plugin('pagination');
+export default bookshelf1;

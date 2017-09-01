@@ -98,6 +98,19 @@ router.get('/api/staff', (req, res, next) => {
   res.status(200).send(staffList)
 });
 
+router.get('/api/staff/page/:pageNumber', (req, res, next) => {
+  User.fetchPage({
+    pageSize: 9,
+    page: req.params.pageNumber ? req.params.pageNumber : 1
+  })
+  .then((results) => {
+    res.status(200).send(results)
+  })
+  .catch((errors) => {
+    res.status(401).send(errors)
+  })
+});
+
 router.get('/api/staff/:id', (req, res, next) => {
   res.status(200).json(staffList.filter((staff) => { console.log(staff.id == req.params.id);return staff.id == req.params.id;}))
 })

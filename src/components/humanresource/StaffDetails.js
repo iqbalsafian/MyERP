@@ -114,6 +114,16 @@ class PersonnelDetails extends Component {
   }
 }
 
+class AllowanceAndBenefits extends Component {
+  render() {
+    return (  
+      <div>
+        Allowance And Benefits
+      </div>
+    )
+  }
+}
+
 class StaffDetails extends Component {
   componentWillMount() {
     const { selectedStaff } = this.props
@@ -132,7 +142,7 @@ class StaffDetails extends Component {
           <Tabs style={{paddingTop:'10px'}}>
             <TabList className="centeringText">
               <Tab>Personnel Details</Tab>
-              <Tab>Roles</Tab>
+              <Tab>Allowance & Benefits</Tab>
               <Tab>Administration</Tab>
               <Tab>Financial</Tab>
             </TabList>
@@ -141,6 +151,7 @@ class StaffDetails extends Component {
                 <PersonnelDetails staffDetails={this.state.staffDetails} />
               </TabPanel>
               <TabPanel>
+                <AllowanceAndBenefits staffDetails={this.state.staffDetails} />
               </TabPanel>
               <TabPanel>
                 <PersonnelDetails  staffDetails={this.state.staffDetails} />

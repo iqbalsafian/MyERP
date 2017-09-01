@@ -92,10 +92,10 @@ class StaffList extends Component {
                   </div>
                   <div style={{textAlign:'left'}} className="grid-70">
                     <div>
-                      {staff.firstName} {staff.lastName}
+                      {staff.firstname} {staff.lastname}
                     </div>
+                    <div>{staff.designation.slice(0, 15)}</div>
                   </div>
-                  <div>Software Developer</div>
                 </div>
               )
             })
@@ -117,7 +117,7 @@ class StaffList extends Component {
           <Button iconName="plus" text="Add New"
             className="pt-intent-primary"
             onClick={this.newStaff}/>
-          <Button iconName="trash" text="Delete" className="pt-intent-warning" />
+          <Button iconName="trash" text="Delete" className="pt-intent-primary" />
         </div>
         <Dialog
           title={this.state.dialogTitle}

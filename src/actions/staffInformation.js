@@ -11,7 +11,7 @@ export function putDisplayedStaff(staffList) {
 
 export function setDisplayedStaff() {
   return dispatch => {
-    return axios.get('http://localhost:3003/api/staff')
+    return axios.get('http://localhost:3003/api/staff/page/1')
       .then((response) => {
         localStorage.setItem("staffList", response.data)
         dispatch(putDisplayedStaff(response.data));
