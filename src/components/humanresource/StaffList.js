@@ -5,32 +5,28 @@ import { setDisplayedStaff, getStaffById } from '../../actions/staffInformation'
 import { Button, Dialog, Intent, Hotkey, Hotkeys, HotkeysTarget } from "@blueprintjs/core";
 import StaffDetails from './StaffDetails';
 import NewStaffForm from './NewStaffForm';
-import Pagination from 'rc-pagination';
-import '../../pagination.css';
+import Pagination from '../helpers/Pagination'
 
 class StaffList extends Component {
-  constructor(props) {
-    super(props)
-    props.setDisplayedStaff()
-  }
   state = {
-    isOpen: true,
+    isOpen: false,
     dialogTitle: 'New Staff',
     selectedStaffId: 0,
-    selectedStaff: {}
+    selectedStaff: {},
+    pageNum: 1
   }
 
   showStaffDetails = (staffId) => {
-    const { id, firstName } = this.props.staffList.staffList.find(staff => staff.id === staffId);
+    const { id, firstname } = this.props.staffList.staffList.results.find(staff => staff.id === staffId);
     getStaffById(staffId)
       .then(response => {
-        if (response.data[0])
+        if (response.data)
         {
           this.setState({
-            dialogTitle: 'Staff Details Information - ' + firstName,
+            dialogTitle: 'Staff Details Information - ' + firstname,
             selectedStaffId: id,
             isOpen: true,
-            selectedStaff: response.data[0]
+            selectedStaff: response.data
           })
         }
     })
@@ -49,6 +45,13 @@ class StaffList extends Component {
   }
 
   componentWillMount() {
+    this.props.setDisplayedStaff()
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (JSON.stringify(this.props.staffList.staffList.results[0].id) !== JSON.stringify(nextProps.staffList.staffList.results[0].id)) {
+      this.render()
+    }
   }
 
   renderHotkeys() {
@@ -62,17 +65,25 @@ class StaffList extends Component {
     </Hotkeys>
   }
 
+  reRender(fromChild) {
+    this.props.setDisplayedStaff(fromChild);
+  }
+
   render() {
-    // console.log(this.props);
     const { staffList } = this.props.staffList;
+    const theElements = []
+    for(let i = 0; i < staffList.pagination.pageCount; i++) {
+      theElements.push({linkTo: '/hr/page/' + (i+1), display: (i+1)})
+    }
+
     return(
       <div>
         Staff List
         <div>
           <input className="pt-input" type="search" placeholder="Search" dir="auto" style={{marginRight:'10px'}} />
-          <div className="pt-select" style={{paddingRight:'10px'}}>
+          <div className="pt-select pt-intent-primary" style={{paddingRight:'10px'}}>
             <select>
-              <option selected>Choose department</option>
+              <option defaultValue>Choose department</option>
               <option value="1">One</option>
               <option value="2">Two</option>
               <option value="3">Three</option>
@@ -84,7 +95,7 @@ class StaffList extends Component {
         <div className="grid-container" style={{overflow:'auto'}}>
           {
             staffList ?
-            staffList.map((staff, key) => {
+            staffList.results.map((staff, key) => {
               return (
                 <div key={key} onClick={() => this.showStaffDetails(staff.id)} className="pt-card pt-elevation-1 pt-interactive transparentThis grid-30 grid-container card-padding" style={{margin:'10px 10px 0px 10px'}}>
                   <div className="grid-30">
@@ -92,7 +103,7 @@ class StaffList extends Component {
                   </div>
                   <div style={{textAlign:'left'}} className="grid-70">
                     <div>
-                      {staff.firstname} {staff.lastname}
+                      {staff.fullname.slice(0, 15)}
                     </div>
                     <div>{staff.designation.slice(0, 15)}</div>
                   </div>
@@ -104,14 +115,7 @@ class StaffList extends Component {
           }
         </div>
         <div style={{paddingTop: '20px', paddingBottom: '15px'}}>
-          <Pagination defaultCurrent={1}
-            current={1}
-            total={10}
-            defaultPageSize={3}
-            pageSize={3}
-            className="centeringText centeringAlignment"
-            style={{margin: 'auto', width:'230', paddingLeft:'10px'}}
-          />
+          <Pagination theElements={theElements} reRender={this.reRender.bind(this)} />
         </div>
         <div>
           <Button iconName="plus" text="Add New"
@@ -151,12 +155,12 @@ class StaffList extends Component {
 }
 
 StaffList.propTypes = {
-  // staffList: PropTypes.object.isRequired
+  staffList: PropTypes.object.isRequired
 }
 
 function mapStateToProps(state) {
   return {
-    staffList: state.staffList ? state.staffList : {}
+    staffList: state.staffList
   }
 }
 HotkeysTarget(StaffList)

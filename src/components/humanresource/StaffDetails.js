@@ -21,7 +21,7 @@ class PersonnelDetails extends Component {
                 type="text"
                 placeholder="First Name" dir="auto"
                 id="firstName" name="firstName"
-                defaultValue={staffDetails.firstName} />
+                defaultValue={staffDetails.firstname} />
             </div>
           </div>
           <div className="grid-container">
@@ -29,7 +29,7 @@ class PersonnelDetails extends Component {
             <div className={fieldWidth}>
               <input className="pt-input .pt-fill" type="text" placeholder="Last Name"
                 dir="auto"
-                defaultValue={staffDetails.lastName} />
+                defaultValue={staffDetails.lastname} />
             </div>
           </div>
           <div className="grid-container">
@@ -116,7 +116,7 @@ class PersonnelDetails extends Component {
 
 class AllowanceAndBenefits extends Component {
   render() {
-    return (  
+    return (
       <div>
         Allowance And Benefits
       </div>

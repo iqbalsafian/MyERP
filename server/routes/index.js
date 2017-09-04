@@ -82,26 +82,10 @@ router.post('/api/staff/new', (req, res, next) => {
   })
 });
 
-const staffList = [
-  {id: 1, firstName: 'John', lastName: 'Doe', email: 'johnny@imail.com'},
-  {id: 2, firstName: 'Joe', lastName: 'Doe', email: 'joey@imail.com'},
-  {id: 3, firstName: 'Jane', lastName: 'Doe', email: 'jenny@imail.com'},
-  {id: 4, firstName: 'Joe', lastName: 'Doe', email: 'joey@imail.com'},
-  {id: 5, firstName: 'Joe', lastName: 'Doe', email: 'joey@imail.com'},
-  {id: 6, firstName: 'Joe', lastName: 'Doe', email: 'joey@imail.com'},
-  {id: 7, firstName: 'Joe', lastName: 'Doe', email: 'joey@imail.com'},
-  {id: 8, firstName: 'Joe', lastName: 'Doe', email: 'joey@imail.com'},
-  {id: 9, firstName: 'Joe', lastName: 'Doe', email: 'joey@imail.com'}
-];
-
 router.get('/api/staff', (req, res, next) => {
-  res.status(200).send(staffList)
-});
-
-router.get('/api/staff/page/:pageNumber', (req, res, next) => {
   User.fetchPage({
     pageSize: 9,
-    page: req.params.pageNumber ? req.params.pageNumber : 1
+    page: 1
   })
   .then((results) => {
     res.status(200).send(results)
@@ -111,6 +95,31 @@ router.get('/api/staff/page/:pageNumber', (req, res, next) => {
   })
 });
 
-router.get('/api/staff/:id', (req, res, next) => {
-  res.status(200).json(staffList.filter((staff) => { console.log(staff.id == req.params.id);return staff.id == req.params.id;}))
+router.get('/api/staff/:pageNumber', (req, res, next) => {
+  User.fetchPage({
+    pageSize: 9,
+    page: req.params.pageNumber ? req.params.pageNumber : 1
+  })
+  .then((results) => {
+    var theResults = {
+      results,
+      pagination: results.pagination
+    }
+    res.status(200).json(theResults)
+  })
+  .catch((errors) => {
+    res.status(401).send(errors)
+  })
+});
+
+router.get('/api/staffdetails/:id', (req, res, next) => {
+  User.where('id', req.params.id).fetch()
+    .then((results) => {
+      res.status(200).json(
+        results
+      )
+    })
+    .catch((errors) => {
+      res.status(401).json(errors)
+    })
 })

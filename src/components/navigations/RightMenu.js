@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card } from '@blueprintjs/core';
+// import { Card } from '@blueprintjs/core';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 

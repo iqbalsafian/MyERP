@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import Accordion from 'react-responsive-accordion';
 
-import { Classes, Menu, MenuDivider } from "@blueprintjs/core";
-
 class LeftMenu extends Component {
   render() {
     return(

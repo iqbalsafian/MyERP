@@ -90,3 +90,26 @@ li:focus {
 .chatBorder {
   border-bottom: thin solid #000000;
 }
+
+.pagination {
+    display: inline-block;
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    width: 40px;
+    min-height: 20px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #394B59;
+    margin: 0 4px;
+}
+
+.pagination a.active {
+    background-color: #4CAF50;
+    color: white;
+    border: 1px solid #4CAF50;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}

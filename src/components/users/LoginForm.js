@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { userLoginRequest } from '../../actions/userAuthentication';
 import { setDisplayedStaff } from '../../actions/staffInformation';
-import { Button, Intent, Dialog, Spinner } from "@blueprintjs/core";
+import { Button, Intent, Dialog } from "@blueprintjs/core";
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 

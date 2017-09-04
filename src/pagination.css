@@ -31,12 +31,12 @@
   list-style: none;
   float: left;
   border: 1px solid #d9d9d9;
-  background-color: #fff;
+  background-color: rgba(0, 0, 0, 0.1);
   margin-right: 8px;
 }
 .rc-pagination-item a {
   text-decoration: none;
-  color: #666;
+  color: #FFF;
 }
 .rc-pagination-item:hover {
   border-color: #2db7f5;
@@ -45,7 +45,7 @@
   color: #2db7f5;
 }
 .rc-pagination-item-active {
-  background-color: #2db7f5;
+  background-color: rgba(0, 0, 0, 0.2);
   border-color: #2db7f5;
 }
 .rc-pagination-item-active a {
@@ -83,7 +83,7 @@
 .rc-pagination-jump-prev,
 .rc-pagination-jump-next {
   cursor: pointer;
-  color: #666;
+  color: #fff;
   font-size: 10px;
   border-radius: 6px;
   list-style: none;
@@ -108,7 +108,7 @@
 }
 .rc-pagination-prev a,
 .rc-pagination-next a {
-  color: #666;
+  color: #fff;
 }
 .rc-pagination-prev a:after,
 .rc-pagination-next a:after {

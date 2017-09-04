@@ -12,6 +12,10 @@ class PageNotFound extends Component {
     redirect: false
   }
 
+  componentDidMount() {
+    this.callMeBack()
+  }
+
   render() {
     return (
       (this.state.redirect)
@@ -29,9 +33,6 @@ class PageNotFound extends Component {
               Or, It is now safe to turn off your computer.
 
           </p>
-          {
-            this.callMeBack()
-          }
         </div>
     )
   }

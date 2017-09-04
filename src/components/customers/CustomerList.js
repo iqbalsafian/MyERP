@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Button, Dialog, Intent, Hotkey, Hotkeys, HotkeysTarget } from "@blueprintjs/core";
+import { Button
+  // Dialog, Intent, Hotkey, Hotkeys, HotkeysTarget
+} from "@blueprintjs/core";
 
 export default class CustomerList extends Component {
   render() {
@@ -11,7 +13,7 @@ export default class CustomerList extends Component {
           <Button text="Search" iconName="search" className="pt-intent-primary" />
         </div>
         <div className="grid-container" style={{overflow:'auto'}}>
-          
+
         </div>
       </div>
     )
