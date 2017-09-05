@@ -123,3 +123,9 @@ router.get('/api/staffdetails/:id', (req, res, next) => {
       res.status(401).json(errors)
     })
 })
+
+router.get('/chat', (req, res, next) => {
+  res.status(200).json({
+    response: 'Here i am'
+  })
+})

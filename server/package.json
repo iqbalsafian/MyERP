@@ -30,6 +30,7 @@
     "pg": "^7.1.2",
     "pug": "^2.0.0-beta11",
     "serve-favicon": "~2.3.2",
+    "socket.io": "^2.0.3",
     "validator": "^8.0.0"
   },
   "devDependencies": {
