@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import Accordion from 'react-responsive-accordion';
 import Draggable from 'react-draggable';
+import ComposeEmail from '../helpers/ComposeEmail'
 
 class LeftMenu extends Component {
   eventLogger = (e: MouseEvent, data: Object) => {
@@ -88,15 +89,15 @@ class LeftMenu extends Component {
         </div>
         <Draggable
         handle=".handle"
-        defaultPosition={{x: 0, y: 0}}
+        defaultPosition={{x: 100, y: -100}}
         position={null}
         onStart={this.handleStart}
         onDrag={this.handleDrag}
         onStop={this.handleStop}>
-        <div className="pt-elevation-4" style={{width: '250px', position:'absolute', zIndex: '1000'}}>
-          <div className="handle centeringText">Compose New Email
+        <div className="pt-elevation-4 transparentThis" style={{width: '350px', height:'285px', position:'absolute', zIndex: '1000'}}>
+          <div className="handle centeringText" style={{cursor:'move', paddingTop:'10px'}}>Compose New Email
           </div>
-          <div>asd</div>
+          <ComposeEmail />
         </div></Draggable>
       </div>
     )
