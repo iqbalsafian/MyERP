@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import Accordion from 'react-responsive-accordion';
+import Draggable from 'react-draggable';
 
 class LeftMenu extends Component {
+  eventLogger = (e: MouseEvent, data: Object) => {
+    console.log('Event: ', e);
+    console.log('Data: ', data);
+  };
   render() {
     return(
       <div className="transparentThis" style={{paddingTop:'15px', paddingLeft: '15px', height: '85vh'}}>
@@ -62,6 +67,37 @@ class LeftMenu extends Component {
             </ul>
           </div>
         </Accordion>
+        <div>
+          <ul style={{paddingBottom: '10px'}}>
+            <li>
+              Email
+            </li>
+            <li>
+              <span className="leftMenuSpan pt-icon-standard pt-icon-home" />
+              Compose
+            </li>
+            <li>
+              <span className="leftMenuSpan pt-icon-standard pt-icon-home" />
+              Inbox
+            </li>
+            <li>
+              <span className="leftMenuSpan pt-icon-standard pt-icon-home" />
+              Sent
+            </li>
+          </ul>
+        </div>
+        <Draggable
+        handle=".handle"
+        defaultPosition={{x: 0, y: 0}}
+        position={null}
+        onStart={this.handleStart}
+        onDrag={this.handleDrag}
+        onStop={this.handleStop}>
+        <div className="pt-elevation-4" style={{width: '250px', position:'absolute', zIndex: '1000'}}>
+          <div className="handle centeringText">Compose New Email
+          </div>
+          <div>asd</div>
+        </div></Draggable>
       </div>
     )
   }

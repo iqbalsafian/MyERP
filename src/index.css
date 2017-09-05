@@ -10,9 +10,6 @@ html, body {
 table, thead, tr, td {
   color: white; }
 
-.leftMenuSpan {
-  padding-right: 7px; }
-
 ul {
   list-style-type: none;
   margin: 0 0 1 0;
@@ -83,7 +80,7 @@ li:focus {
 }
 
 .leftMenuSpan {
-  padding-right: 7px;
+  padding-right: 9px;
   cursor: pointer;
 }
 
