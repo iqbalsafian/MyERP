@@ -50,15 +50,7 @@ app.set('port', port);
 
 const server = http.createServer(app);
 const io = require('socket.io')(server)
-
-io.on('connection', socket => {
-  socket.on("getData", (data) => {
-    socket.emit("reply", "berita faham")
-  })
-  socket.on("disconnect", () => {
-    console.log('client disconnected');
-  })
-})
+var chat = require('../utils/chat')(io);
 
 /**
  * Listen on provided port, on all network interfaces.

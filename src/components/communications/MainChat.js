@@ -2,14 +2,16 @@ import React, { Component } from 'react';
 import socketIOClient from 'socket.io-client';
 
 class MainChat extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       response: false,
       endpoint: 'http://localhost:3003'
     }
     const { endpoint } = this.state;
-    this.socket = socketIOClient(endpoint);
+    this.socket = socketIOClient(endpoint, {
+      query: { token: localStorage.jwtToken }
+    });
   }
 
   componentDidMount() {
@@ -34,7 +36,7 @@ class MainChat extends Component {
         {
           response
         }
-        <button onClick={this.handleClick}>klik aku</button>
+        <button onClick={this.handleClick}>click me</button>
       </div>
     )
   }
