@@ -77,7 +77,7 @@ class StaffList extends Component {
     }
 
     return(
-      <div>
+      <div style={{borderCollapse: 'collapse', display: 'table', position: 'relative', height: '71vh'}}>
         Staff List
         <div className="grid-container" style={{overflow:'auto'}}>
           {
@@ -101,15 +101,10 @@ class StaffList extends Component {
             ''
           }
         </div>
-        <div style={{paddingTop: '20px', paddingBottom: '15px'}}>
+        <div style={{paddingTop: '10px'}}>
           <Pagination theElements={theElements} reRender={this.reRender.bind(this)} />
         </div>
-        <div>
-          <Button iconName="plus" text="Add New"
-            className="pt-intent-primary"
-            onClick={this.newStaff}/>
-          <Button iconName="trash" text="Delete" className="pt-intent-primary" />
-        </div>
+
         <Dialog
           title={this.state.dialogTitle}
           className="pt-dark"
@@ -123,17 +118,6 @@ class StaffList extends Component {
                 <StaffDetails selectedStaff={this.state.selectedStaff} /> :
                 <NewStaffForm />
               }
-
-            </div>
-            <div className="pt-dialog-footer">
-                <div className="pt-dialog-footer-actions">
-                    <Button text="Secondary" />
-                    <Button
-                        intent={Intent.PRIMARY}
-                        onClick={this.toggleOverlay}
-                        text="Close"
-                    />
-                </div>
             </div>
         </Dialog>
       </div>

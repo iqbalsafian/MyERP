@@ -18,7 +18,7 @@ export default class MainContent extends Component {
   render() {
     return(
       <div>
-        <div style={{marginTop:'15px', height:'75vh'}} className="pt-card transparentThis centeringText">
+        <div style={{marginTop:'15px', height:'77vh'}} className="pt-card transparentThis centeringText">
           <Switch>
             <Route exact path='/' component={Dashboard} />
             <Route exact path="/settings/userroles" component={UserRoles} />
@@ -34,8 +34,8 @@ export default class MainContent extends Component {
             <Route path="*" component={PageNotFound} />
           </Switch>
         </div>
-        <div style={{height:'15px'}} className="">
-          <div className="centeringText" style={{paddingTop:'25px'}}>Copy Your Rights! 2017</div>
+        <div style={{height:'13px'}} className="">
+          <div className="centeringText" style={{paddingTop:'23px'}}>Copy Your Rights! @ Forever</div>
         </div>
       </div>
     )

@@ -97,7 +97,7 @@ router.get('/api/staff', (req, res, next) => {
 
 router.get('/api/staff/:pageNumber', (req, res, next) => {
   User.fetchPage({
-    pageSize: 9,
+    pageSize: 12,
     page: req.params.pageNumber ? req.params.pageNumber : 1
   })
   .then((results) => {
