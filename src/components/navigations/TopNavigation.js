@@ -32,6 +32,10 @@ class TopNavigation extends Component {
                   MyERP
                 </NavLink>
               </div>
+              <div className="pt-input-group">
+                <input className="pt-input" type="search" placeholder="Search input" dir="auto" />
+                <span className="pt-icon pt-icon-search" style={{cursor:'pointer'}}></span>
+              </div>
             </div>
             <div className="pt-navbar-group pt-align-right">
               <span className="pt-navbar-divider"></span>

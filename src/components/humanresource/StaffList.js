@@ -79,19 +79,6 @@ class StaffList extends Component {
     return(
       <div>
         Staff List
-        <div>
-          <input className="pt-input" type="search" placeholder="Search" dir="auto" style={{marginRight:'10px'}} />
-          <div className="pt-select pt-intent-primary" style={{paddingRight:'10px'}}>
-            <select>
-              <option defaultValue>Choose department</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-              <option value="4">Four</option>
-            </select>
-          </div>
-          <Button text="Search" iconName="search" className="pt-intent-primary" />
-        </div>
         <div className="grid-container" style={{overflow:'auto'}}>
           {
             staffList ?
