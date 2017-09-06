@@ -13,7 +13,7 @@ class ComposeEmail extends Component {
         <label className="pt-label">
           Message
           <span className="pt-text-muted">(required)</span>
-          <textarea className="pt-input pt-fill" type="text" placeholder="Message" dir="auto" style={{height:'100'}}></textarea>
+          <textarea className="pt-input pt-fill" type="text" placeholder="Message" dir="auto" style={{height:'100px'}}></textarea>
         </label>
         <div>
           <Button iconName="pt-icon-send-to" text="Send" />

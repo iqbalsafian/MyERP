@@ -8,6 +8,10 @@ import NewStaffForm from './NewStaffForm';
 import Pagination from '../helpers/Pagination'
 
 class StaffList extends Component {
+  constructor(props) {
+    super(props)
+    this.props.setDisplayedStaff()
+  }
   state = {
     isOpen: false,
     dialogTitle: 'New Staff',
@@ -44,12 +48,11 @@ class StaffList extends Component {
     this.setState({ isOpen: this.state.isOpen ? false : true })
   }
 
-  componentWillMount() {
-    this.props.setDisplayedStaff()
-  }
-
   componentWillReceiveProps(nextProps) {
-    if (JSON.stringify(this.props.staffList.staffList.results[0].id) !== JSON.stringify(nextProps.staffList.staffList.results[0].id)) {
+    if (
+      !(this.props.staffList.staffList) ||
+      JSON.stringify(this.props.staffList.staffList.results[0].id) !== JSON.stringify(nextProps.staffList.staffList.results[0].id)
+    ) {
       this.render()
     }
   }
@@ -70,9 +73,12 @@ class StaffList extends Component {
   }
 
   render() {
-    const { staffList } = this.props.staffList;
+    const { staffList = {} } = this.props.staffList;
+    const { pagination = {} } = staffList;
+    const { results = [] } = staffList;
+    const { pageCount = 0 } = pagination;
     const theElements = []
-    for(let i = 0; i < staffList.pagination.pageCount; i++) {
+    for(let i = 0; i < pageCount; i++) {
       theElements.push({linkTo: '/hr/page/' + (i+1), display: (i+1)})
     }
 
@@ -81,8 +87,8 @@ class StaffList extends Component {
         Staff List
         <div className="grid-container" style={{overflow:'auto'}}>
           {
-            staffList ?
-            staffList.results.map((staff, key) => {
+            results ?
+            results.map((staff, key) => {
               return (
                 <div key={key} onClick={() => this.showStaffDetails(staff.id)} className="pt-card pt-elevation-1 pt-interactive transparentThis grid-30 grid-container card-padding" style={{margin:'10px 10px 0px 10px'}}>
                   <div className="grid-30">
@@ -101,7 +107,7 @@ class StaffList extends Component {
             ''
           }
         </div>
-        <div style={{paddingTop: '10px'}}>
+        <div style={{paddingTop: '10px', width:'100%'}}>
           <Pagination theElements={theElements} reRender={this.reRender.bind(this)} />
         </div>
 
@@ -123,10 +129,6 @@ class StaffList extends Component {
       </div>
     )
   }
-}
-
-StaffList.propTypes = {
-  staffList: PropTypes.object.isRequired
 }
 
 function mapStateToProps(state) {
