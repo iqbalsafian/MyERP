@@ -8,7 +8,7 @@ class RightMenu extends Component {
 
   render() {
     return (
-      <div className="chat pt-dark" style={{backgroundColor:'rgba(0,0,0,0.2)', height: '85vh'}}>
+      <div className="chat pt-dark transparentThis" style={{height: '85vh'}}>
         <Tabs style={{marginTop:'-10px'}}>
           <TabList className="centeringText">
             <Tab>Chats</Tab>

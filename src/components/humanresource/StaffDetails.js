@@ -51,9 +51,17 @@ class PersonnelDetails extends Component {
           <div className="grid-container">
             <div className={labelWidth}>Department</div>
             <div className={fieldWidth}>
-              <input className="pt-input .pt-fill" type="text" placeholder="Last Name"
+              <input className="pt-input .pt-fill" type="text" placeholder="Department"
                 dir="auto"
                 defaultValue={staffDetails.lastName} />
+            </div>
+          </div>
+          <div className="grid-container">
+            <div className={labelWidth}>Email</div>
+            <div className={fieldWidth}>
+              <input className="pt-input .pt-fill" type="text" placeholder="Emial"
+                dir="auto"
+                defaultValue={staffDetails.email} />
             </div>
           </div>
         </div>

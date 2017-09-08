@@ -33,7 +33,7 @@ class TopNavigation extends Component {
                 </NavLink>
               </div>
               <div className="pt-input-group">
-                <input className="pt-input" type="search" placeholder="Search input" dir="auto" />
+                <input className="pt-input" type="search" placeholder="Search" dir="auto" />
                 <span className="pt-icon pt-icon-search" style={{cursor:'pointer'}}></span>
               </div>
             </div>

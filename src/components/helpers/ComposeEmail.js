@@ -17,7 +17,12 @@ class ComposeEmail extends Component {
         </label>
         <div>
           <Button iconName="pt-icon-send-to" text="Send" />
-          <Button iconName="pt-icon-send-to" text="Cancel" />
+          <Button iconName="pt-icon-send-to" text="Cancel"
+            onClick={(e) => {
+              e.preventDefault();
+              this.props.setToCancel()
+            }}
+          />
         </div>
       </div>
     )

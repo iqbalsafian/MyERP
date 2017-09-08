@@ -5,7 +5,6 @@ import jwt from 'jsonwebtoken';
 import jwtConfig from '../jwtConfig';
 import chatToken from './chattoken';
 
-
 module.exports = (io) => {
   let error;
   io.use(function(socket, next){

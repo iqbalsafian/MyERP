@@ -47,6 +47,9 @@ li {
 .transparentThis {
   background-color: rgba(0, 0, 0, 0.2); }
 
+.transparentThisDeeper {
+  background-color: rgba(0, 0, 0, 0.7); }
+
 .cursorPointer {
   cursor: pointer;
 }
