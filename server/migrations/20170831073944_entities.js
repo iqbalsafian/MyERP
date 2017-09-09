@@ -22,11 +22,14 @@ exports.up = function(knex, Promise) {
     table.boolean('iscustomer').defaultTo(0);
     table.boolean('issupplier').defaultTo(0);
     table.boolean('isfixedasset').defaultTo(0);
+    table.boolean('isOnline').defaultTo(false);
+    table.boolean('is_allowed_to_login').defaultTo(false);
+    table.integer('department_num').defaultTo(0);
     table.timestamp('created_at').notNullable().defaultTo(knex.raw('now()'));
     table.timestamp('updated_at').notNullable().defaultTo(knex.raw('now()'));
   });
 };
 
 exports.down = function(knex, Promise) {
-  return knex.schema.dropTable('staff');
+  return knex.schema.dropTable('entities');
 };

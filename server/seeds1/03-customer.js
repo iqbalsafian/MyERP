@@ -3,8 +3,8 @@ const bcrypt = require('bcrypt');
 
 var createCustomer = (knex, id) => {
   return knex('entities').insert({
-    fullname: faker.commerce.companyName(),
-    password_digest: bcrypt.hashSync('password', 10)
+    fullname: faker.company.companyName(),
+    password_digest: bcrypt.hashSync('password', 10),
     email: faker.internet.email(),
     address1: faker.address.streetName(),
     address2: faker.address.streetAddress(),

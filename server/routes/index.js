@@ -16,6 +16,14 @@ router.get('/', (req, res, next) => {
   });
 });
 
+router.get('/knex', (req, res, next) => {
+  knex('entities')
+    .select("fullname")
+    .then(entity => {
+      res.status(200).json(entity)
+    })
+})
+
 export default router;
 
 function validateInput(data) {
@@ -96,7 +104,7 @@ router.get('/api/staff', (req, res, next) => {
 });
 
 router.get('/api/staff/:pageNumber', (req, res, next) => {
-  User.fetchPage({
+  User.where('isstaff', true).fetchPage({
     pageSize: 12,
     page: req.params.pageNumber ? req.params.pageNumber : 1
   })
