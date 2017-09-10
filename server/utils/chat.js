@@ -4,6 +4,9 @@ import User from '../models/user';
 import jwt from 'jsonwebtoken';
 import jwtConfig from '../jwtConfig';
 import chatToken from './chattoken';
+import mongodb from 'mongodb';
+
+const mongoUrl = 'mongodb://localhost/chatforbis';
 
 module.exports = (io) => {
   let error;
@@ -22,8 +25,11 @@ module.exports = (io) => {
   })
   .on('connection', socket => {
     socket.on("getData", (data) => {
-      if (error) socket.emit('reply', error);
+      if (error) socket.emit('reply', 'There is an error: ' + error);
       else socket.emit("reply", 'hola mundo');
+    })
+    socket.on("sendChat", (data) => {
+      socket.emit("reply", "msg received");
     })
     socket.on("disconnect", () => {
       // console.log('client disconnected');

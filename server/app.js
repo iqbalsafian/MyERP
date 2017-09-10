@@ -8,6 +8,7 @@ import cors from 'cors';
 import path from 'path';
 import sassMiddleware from 'node-sass-middleware';
 import index from './routes/index';
+import customer from './routes/customer';
 // import authorization from './routes/authorization';
 
 const app = express();
@@ -36,6 +37,7 @@ app.use(sassMiddleware({
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
+app.use('/customer', customer);
 // app.use('/login', authorization);
 
 // catch 404 and forward to error handler
