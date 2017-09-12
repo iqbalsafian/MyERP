@@ -12,6 +12,13 @@ import jwtDecode from 'jwt-decode';
 import { setCurrentUser } from './actions/userAuthentication';
 import { setDisplayedStaff } from './actions/staffInformation';
 
+window.onbeforeunload = (e) => {
+  window.onunload = () => {
+    window.localStorage.removeItem('jwtToken');
+  }
+  return undefined();
+}
+
 const store = createStore(
   rootReducer,
   composeWithDevTools(
