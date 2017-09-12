@@ -5,7 +5,7 @@ class MainChat extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      response: false,
+      response: [],
       endpoint: 'http://localhost:3003'
     }
     const { endpoint } = this.state;
@@ -15,11 +15,16 @@ class MainChat extends Component {
   }
 
   componentDidMount() {
-    this.socket.emit("getData", 1000);
+    this.retrieveConversations();
   }
 
-  handleClick = () => {
-    this.socket.emit("getData", 1000);
+  componentDidUpdate(prevProps, prevState) {
+    if (JSON.stringify(prevState.response) !== JSON.stringify(this.state.response))
+      return true;
+  }
+
+  retrieveConversations = () => {
+    this.socket.emit("displaySnapshot", 1000);
     this.socket.on("reply", (response) => {
       this.setState({response})
     })
@@ -28,15 +33,21 @@ class MainChat extends Component {
   render() {
     const { response } = this.state
     return(
-      <div style={{margin:'-7px 7px 0 7px'}}>
-        <div className="pt-callout chatBorder">
-        </div>
-        <div className="pt-callout chatBorder">
-        </div>
+      <div style={{margin:'-7px 7px 0 7px'}} className="centeringText">
         {
-          response
+          response ? response.map((resp, key) => {
+            return (
+              <div key={key} className="pt-callout chatBorder grid-container">
+                <div className="grid-30">
+                  <img src="" alt="" />
+                </div>
+                <div className="grid-70">
+                  message here
+                </div>
+              </div>
+            )
+          }) : 'No conversation was found'
         }
-        <button onClick={this.handleClick}>click me</button>
       </div>
     )
   }

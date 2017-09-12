@@ -14,7 +14,6 @@ class RightMenu extends Component {
             <Tab>Chats</Tab>
             <Tab>Contacts</Tab>
           </TabList>
-
           <TabPanel>
             <MainChat />
           </TabPanel>
