@@ -104,6 +104,19 @@ router.get('/api/department', (req, res, next) => {
   })
 })
 
+router.get('/api/departmentdetails/:departmentId', (req, res, next) => {
+  Entities.where({
+    isdepartment: true,
+    id: req.params.departmentId
+  }).fetch()
+  .then((results) => {
+    res.status(200).send(results)
+  })
+  .catch((err) => {
+    res.status(401).send(err)
+  })
+})
+
 router.get('/api/department/:pageNumber', (req, res, next) => {
   Entities.where('isdepartment', true)
   .fetchPage({

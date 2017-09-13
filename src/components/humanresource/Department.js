@@ -1,13 +1,23 @@
 import React, { Component } from 'react';
-import { setDisplayedDepartment } from '../../actions/department';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Button, Dialog, Intent } from "@blueprintjs/core";
+import { setDisplayedDepartment, getDepartmentById } from '../../actions/department';
+import DepartmentDetails from './DepartmentDetails';
+import NewDepartmentForm from './NewDepartmentForm';
 
 class Department extends Component {
   constructor(props) {
     super(props)
     this.props.setDisplayedDepartment();
   }
+
+  state = {
+    isOpen: false,
+    dialogTitle: 'New Department',
+    selectedDepartmentid: 0
+  }
+
   componentWillReceiveProps(nextProps) {
     if (
       !(this.props.humanresource.departmentList) ||
@@ -16,10 +26,33 @@ class Department extends Component {
       this.render()
     }
   }
+
+  toggleOverlay = () => {
+    this.setState({ isOpen: this.state.isOpen ? false : true })
+  }
+
+  showDepartmentDetails = (departmentId) => {
+    const { id } = this.props.humanresource.departmentList.find(department => department.id === departmentId);
+    getDepartmentById(departmentId)
+      .then(response => {
+        if (response.data)
+        {
+          this.setState({
+            dialogTitle: 'Department Details Information - ' + response.data.fullname,
+            selectedDepartmentid: id,
+            isOpen: true,
+            selectedDepartment: response.data
+          })
+        }
+      })
+      .catch(err => {
+        alert('There is an error while connecting to the server: ' + err)
+      })
+  }
+
   render() {
     const { humanresource = {} } = this.props;
     const { departmentList = [] } = humanresource;
-    console.log(this.props);
     return(
       <div>
         Department
@@ -27,12 +60,12 @@ class Department extends Component {
           {
             departmentList.map((department, key) => {
               return (
-                <div key={key} onClick="" className="pt-card pt-elevation-1 pt-interactive transparentThis grid-30 grid-container card-padding" style={{margin:'10px 10px 0px 10px'}}>
+                <div key={key} onClick={() => this.showDepartmentDetails(department.id)} className="pt-card pt-elevation-1 pt-interactive transparentThis grid-30 grid-container card-padding" style={{margin:'10px 10px 0px 10px'}}>
                   <div>
                     { department.fullname }
                   </div>
                   <div>
-                    Department head:
+                    Head:
                   </div>
                   <div>
                     Staff count: 3
@@ -42,9 +75,28 @@ class Department extends Component {
             })
           }
         </div>
+        <Dialog
+          title={this.state.dialogTitle}
+          className="pt-dark"
+          isOpen={this.state.isOpen}
+          onClose={this.toggleOverlay}
+          style={{width:'450px'}}
+          >
+            <div className="pt-dialog-body">
+              {
+                this.state.selectedDepartmentid ?
+                <DepartmentDetails selectedDepartmentid={this.state.selectedDepartmentid} /> :
+                <NewDepartmentForm />
+              }
+            </div>
+        </Dialog>
       </div>
     )
   }
+}
+
+Department.PropTypes = {
+  setDisplayedDepartment: PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {

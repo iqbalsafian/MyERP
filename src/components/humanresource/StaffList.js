@@ -21,7 +21,7 @@ class StaffList extends Component {
   }
 
   showStaffDetails = (staffId) => {
-    const { id, firstname } = this.props.staffList.staffList.results.find(staff => staff.id === staffId);
+    const { id, firstname } = this.props.humanresource.staffList.results.find(staff => staff.id === staffId);
     getStaffById(staffId)
       .then(response => {
         if (response.data)

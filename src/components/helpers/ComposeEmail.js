@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Button } from '@blueprintjs/core';
+import { Button } from '@blueprintjs/core';
 
 class ComposeEmail extends Component {
   render() {

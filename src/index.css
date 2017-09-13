@@ -7,7 +7,12 @@ html, body {
   background-image: url("./images/blur-bg.jpg");
   width: 100%; }
 
+table {
+  border-collapse: collapse;
+}
+
 table, thead, tr, td {
+  border: 1px solid black;
   color: white; }
 
 ul {
@@ -113,3 +118,11 @@ li:focus {
 }
 
 .pagination a:hover:not(.active) {background-color: #ddd;}
+
+.defaultTextColor {
+  color: white;
+}
+
+.bg-green {
+  background-color: #3C643C;
+}

@@ -19,3 +19,7 @@ export function setDisplayedDepartment(pageNum = 1) {
     })
   }
 }
+
+export function getDepartmentById(departmentId) {
+  return axios.get(apiServer + '/api/departmentdetails/' + departmentId)
+}
