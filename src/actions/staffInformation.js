@@ -13,7 +13,6 @@ export function setDisplayedStaff(pageNum = 1) {
   return dispatch => {
     return axios.get(apiServer + '/api/staff/' + pageNum)
       .then((response) => {
-        // console.log(response.data);
         localStorage.setItem("staffList", response.data)
         dispatch(putDisplayedStaff(response.data));
     })

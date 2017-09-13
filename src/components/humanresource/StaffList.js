@@ -50,8 +50,8 @@ class StaffList extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (
-      !(this.props.staffList.staffList) ||
-      JSON.stringify(this.props.staffList.staffList.results[0].id) !== JSON.stringify(nextProps.staffList.staffList.results[0].id)
+      !(this.props.humanresource.staffList) ||
+      JSON.stringify(this.props.humanresource.staffList.results[0].id) !== JSON.stringify(nextProps.humanresource.staffList.results[0].id)
     ) {
       this.render()
     }
@@ -73,7 +73,7 @@ class StaffList extends Component {
   }
 
   render() {
-    const { staffList = {} } = this.props.staffList;
+    const { staffList = {} } = this.props.humanresource;
     const { pagination = {} } = staffList;
     const { results = [] } = staffList;
     const { pageCount = 0 } = pagination;
@@ -133,7 +133,7 @@ class StaffList extends Component {
 
 function mapStateToProps(state) {
   return {
-    staffList: state.staffList
+    humanresource: state.humanresource
   }
 }
 HotkeysTarget(StaffList)

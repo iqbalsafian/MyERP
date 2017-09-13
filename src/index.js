@@ -12,13 +12,6 @@ import jwtDecode from 'jwt-decode';
 import { setCurrentUser } from './actions/userAuthentication';
 import { setDisplayedStaff } from './actions/staffInformation';
 
-window.onbeforeunload = (e) => {
-  window.onunload = () => {
-    window.localStorage.removeItem('jwtToken');
-  }
-  return undefined();
-}
-
 const store = createStore(
   rootReducer,
   composeWithDevTools(
@@ -31,6 +24,13 @@ if (localStorage.jwtToken) {
   store.dispatch(setCurrentUser(jwtDecode(localStorage.jwtToken)));
   store.dispatch(setDisplayedStaff(localStorage.staffList));
 }
+
+// window.onbeforeunload = (e) => {
+//   window.onunload = () => {
+//     window.localStorage.removeItem('jwtToken');
+//   }
+//   return undefined();
+// }
 
 ReactDOM.render(
   <Provider store={store}>

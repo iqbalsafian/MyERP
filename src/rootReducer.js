@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import auth from './reducers/auth';
-import staffList from './reducers/staff';
+import humanresource from './reducers/humanresource';
 
 export default combineReducers({
-  auth, staffList
+  auth, humanresource
 })

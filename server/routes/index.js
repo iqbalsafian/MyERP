@@ -3,7 +3,7 @@ import isEmpty from 'lodash/isEmpty';
 import Validator from 'validator';
 import knex from 'knex';
 import bcrypt from 'bcrypt';
-import User from '../models/user';
+import Entities from '../models/user';
 import jwt from 'jsonwebtoken';
 import jwtConfig from '../jwtConfig';
 
@@ -54,7 +54,7 @@ router.post('/api/login', (req, res, next) => {
     const { email, password } = req.body;
 
     setTimeout(() => {
-      User
+      Entities
       .where({email: email})
       .fetch()
       .tap((staff) => {
@@ -78,7 +78,7 @@ router.post('/api/login', (req, res, next) => {
 
 router.post('/api/staff/new', (req, res, next) => {
   const { email, password } = req.body;
-  new User({
+  new Entities({
     email,
     password_digest: bcrypt.hashSync(password, 13)
   }).save()
@@ -90,8 +90,38 @@ router.post('/api/staff/new', (req, res, next) => {
   })
 });
 
+router.get('/api/department', (req, res, next) => {
+  Entities.where('isdepartment', true)
+  .fetchPage({
+    pageSize: 9,
+    page: 1
+  })
+  .then((results) => {
+    res.status(200).send(results)
+  })
+  .catch((errors) => {
+    res.status(401).send(errors)
+  })
+})
+
+router.get('/api/department/:pageNumber', (req, res, next) => {
+  Entities.where('isdepartment', true)
+  .fetchPage({
+    pageSize: 9,
+    page: req.params.pageNumber ? req.params.pageNumber : 1
+  })
+  .then((results) => {
+    res.status(200).send(results)
+  })
+  .catch((errors) => {
+    res.status(401).send(errors)
+  })
+})
+
 router.get('/api/staff', (req, res, next) => {
-  User.fetchPage({
+  Entities
+  .where('isstaff', 'true')
+  .fetchPage({
     pageSize: 9,
     page: 1
   })
@@ -104,7 +134,7 @@ router.get('/api/staff', (req, res, next) => {
 });
 
 router.get('/api/staff/:pageNumber', (req, res, next) => {
-  User.where('isstaff', true).fetchPage({
+  Entities.where('isstaff', true).fetchPage({
     pageSize: 12,
     page: req.params.pageNumber ? req.params.pageNumber : 1
   })
@@ -121,7 +151,7 @@ router.get('/api/staff/:pageNumber', (req, res, next) => {
 });
 
 router.get('/api/staffdetails/:id', (req, res, next) => {
-  User.where('id', req.params.id).fetch()
+  Entities.where('id', req.params.id).fetch()
     .then((results) => {
       res.status(200).json(
         results

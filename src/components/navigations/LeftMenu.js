@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import Accordion from 'react-responsive-accordion';
 import Draggable from 'react-draggable';
 import ComposeEmail from '../helpers/ComposeEmail'
-import classNames from 'classnames';
+// import classNames from 'classnames';
 
 class LeftMenu extends Component {
   state = {
