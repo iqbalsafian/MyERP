@@ -1,11 +1,15 @@
-import knex from 'knex';
+// import knex from 'knex';
 import bcrypt from 'bcrypt';
 import User from '../models/user';
+import conversationsMessages from '../models/conversation_messages';
 import conversationsParticipants from '../models/conversation_participants';
+import conversations from '../models/conversations';
 import jwt from 'jsonwebtoken';
 import jwtConfig from '../jwtConfig';
 import chatToken from './chattoken';
 import mongodb from 'mongodb';
+import knexfile from '../knexfile';
+const knex = require('knex')(knexfile.development);
 
 const mongoUrl = 'mongodb://localhost/chatforbis';
 
@@ -30,13 +34,27 @@ module.exports = (io) => {
       const { token } = socket.handshake.query;
       const { id } = jwt.decode(token);
       socket.on("displaySnapshot", (data) => {
-        conversationsParticipants
-          .where({entities_id: id})
+        conversationsMessages
+          .query(qb => {
+            qb.select(
+              knex.raw(
+                `max(conversation_messages.id) as maxconversationId, max(conversation_messages.message) as message,
+                 max(conversation_messages.created_at) as created_at`),
+                'conversations.id'
+              )
+            qb.leftJoin(
+              'conversations',
+              'conversations.id',
+              'conversation_messages.conversation_id'
+            )
+            qb.groupBy('conversations.id')
+            qb.where({entity_id: id})
+            // qb.debug(true)
+          })
           .fetchAll()
-          .tap(conversation => {
-            if (conversation.length) {
-              // console.log(conversation);
-              socket.emit("reply", conversation);
+          .then(results => {
+            if (results.length) {
+              socket.emit("reply", results);
             } else {
               socket.emit('reply', '');
             }

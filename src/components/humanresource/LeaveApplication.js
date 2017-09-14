@@ -24,7 +24,7 @@ class LeaveApplication extends Component {
     return(
       <div>
         Leave Application
-        <div className="grid-container transparentThis" style={{minHeight:'400px', overflowY: 'auto'}}>
+        <div className="grid-container" style={{minHeight:'400px', overflowY: 'auto'}}>
           <table width="100%" style={{marginTop:'10px'}}>
             <thead>
               <tr>

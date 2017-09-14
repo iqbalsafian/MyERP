@@ -26,6 +26,7 @@ class MainChat extends Component {
   retrieveConversations = () => {
     this.socket.emit("displaySnapshot", 1000);
     this.socket.on("reply", (response) => {
+      // console.log(response);
       this.setState({response})
     })
   }
@@ -42,7 +43,9 @@ class MainChat extends Component {
                   <img src="" alt="" />
                 </div>
                 <div className="grid-70">
-                  message here
+                  {
+                    resp.message
+                  }
                 </div>
               </div>
             )
