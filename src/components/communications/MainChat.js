@@ -40,11 +40,11 @@ class MainChat extends Component {
             return (
               <div key={key} className="pt-callout chatBorder grid-container">
                 <div className="grid-30">
-                  <img src="" alt="" />
+                  <img src={require('../../images/REWmEe.jpg')} alt="" height="30" width="30" />
                 </div>
-                <div className="grid-70">
+                <div className="grid-70" className="leftingText">
                   {
-                    resp.message
+                    resp.message.slice(0, 20)
                   }
                 </div>
               </div>
