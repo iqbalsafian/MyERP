@@ -42,7 +42,7 @@ class MainChat extends Component {
                 <div className="grid-30">
                   <img src={require('../../images/REWmEe.jpg')} alt="" height="30" width="30" />
                 </div>
-                <div className="grid-70" className="leftingText">
+                <div className="grid-70 leftingText">
                   {
                     resp.message.slice(0, 20)
                   }

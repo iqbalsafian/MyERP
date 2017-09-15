@@ -1,6 +1,31 @@
 import React, { Component } from 'react';
+import { Button, Dialog, Intent, Hotkey, Hotkeys, HotkeysTarget } from "@blueprintjs/core";
+import NewLeaveApplication from './NewLeaveApplication';
+import LeaveApplicationDetails from './LeaveApplicationDetails';
 
 class LeaveApplication extends Component {
+  state = {
+    openDialog: false,
+    selectedLeave: 0,
+    dialogTitle: 'New Leave'
+  }
+
+  toggleOverlay = () => {
+    this.setState({
+      openDialog: this.state.openDialog ? false : true,
+      selectedLeave: this.state.selectedLeave ? 0 : -1
+    })
+  }
+
+  openLeaveDialog (leaveId) {
+    this.setState({ selectedLeave: leaveId })
+  }
+
+  componentDidUpdate (prevProps, prevState) {
+    if (prevState.selectedLeave !== this.state.selectedLeave)
+      this.setState({ openDialog: this.state.selectedLeave ? true : false })
+  }
+
   render() {
     const dataList = [
       {
@@ -33,7 +58,6 @@ class LeaveApplication extends Component {
                 <th>Type</th>
                 <th>From</th>
                 <th>To</th>
-                <th>Duration</th>
                 <th>Approved By</th>
               </tr>
             </thead>
@@ -41,13 +65,12 @@ class LeaveApplication extends Component {
               {
                 dataList.map((data, key) => {
                   return (
-                    <tr key={key} className="bg-green">
+                    <tr key={key} className="bg-green" onClick={() => this.openLeaveDialog(key+1)}>
                       <td>{key+1}</td>
                       <td>{data.applicant}</td>
                       <td>{data.type}</td>
                       <td>{data.date_from}</td>
                       <td>{data.date_to}</td>
-                      <td>{data.duration}</td>
                       <td>{data.approved_by}</td>
                     </tr>
                   )
@@ -56,6 +79,21 @@ class LeaveApplication extends Component {
             </tbody>
           </table>
         </div>
+        <Dialog
+          title={this.state.dialogTitle}
+          className="pt-dark"
+          isOpen={this.state.openDialog}
+          onClose={this.toggleOverlay}
+          style={{width:'450px'}}
+          >
+            <div className="pt-dialog-body">
+              {
+                this.state.selectedLeave ?
+                <LeaveApplicationDetails selectedLeave={this.state.selectedLeave} /> :
+                <NewLeaveApplication />
+              }
+            </div>
+        </Dialog>
       </div>
     )
   }

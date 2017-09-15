@@ -131,10 +131,16 @@ class StaffList extends Component {
   }
 }
 
+StaffList.PropTypes = {
+  setDisplayedStaff: PropTypes.func.isRequired,
+  humanresource: PropTypes.object.isRequired
+}
+
 function mapStateToProps(state) {
   return {
     humanresource: state.humanresource
   }
 }
+
 HotkeysTarget(StaffList)
 export default connect(mapStateToProps, { setDisplayedStaff })(StaffList);
