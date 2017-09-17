@@ -131,3 +131,14 @@ li:focus {
 .bg-green {
   background-color: #3C643C;
 }
+
+#container {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 10px;
+  width: 550px;
+  height: 300px;
+  background-color: #fff;
+  text-align: center;
+}

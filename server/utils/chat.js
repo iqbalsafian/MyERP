@@ -53,6 +53,7 @@ module.exports = (io) => {
           })
           .fetchAll()
           .then(results => {
+            // console.log(results);
             if (results.length) {
               socket.emit("reply", results);
             } else {

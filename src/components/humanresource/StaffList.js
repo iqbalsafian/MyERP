@@ -90,7 +90,7 @@ class StaffList extends Component {
             results ?
             results.map((staff, key) => {
               return (
-                <div key={key} onClick={() => this.showStaffDetails(staff.id)} className="pt-card pt-elevation-1 pt-interactive transparentThis grid-30 grid-container card-padding" style={{margin:'10px 10px 0px 10px'}}>
+                <div key={key} onClick={() => this.showStaffDetails(staff.id)} className="pt-card pt-elevation-1 pt-interactive transparentThis grid-30 card-padding" style={{margin:'10px 10px 0px 10px'}}>
                   <div className="grid-30">
                     <img src={require('../../images/REWmEe.jpg')} alt="" height="40" width="40" />
                   </div>
