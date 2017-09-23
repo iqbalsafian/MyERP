@@ -2,6 +2,7 @@ import axios from 'axios';
 import jwtDecode from 'jwt-decode';
 import setAuthorizationToken from '../utils/setAuthorizationToken';
 import { SET_CURRENT_USER } from './types';
+import { apiServer } from './config';
 
 export function setCurrentUser(user) {
   return {
@@ -13,7 +14,7 @@ export function setCurrentUser(user) {
 export function userLoginRequest(userData) {
   return dispatch => {
     return axios.post(
-      'http://localhost:3003/api/login',
+      apiServer + '/api/login',
       userData
     ).then((response) => {
       const token = response.data.token;

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import socketIOClient from 'socket.io-client';
+import { apiServer } from '../../actions/config';
 
 class MainChat extends Component {
   constructor(props) {

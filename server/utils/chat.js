@@ -7,11 +7,8 @@ import conversations from '../models/conversations';
 import jwt from 'jsonwebtoken';
 import jwtConfig from '../jwtConfig';
 import chatToken from './chattoken';
-import mongodb from 'mongodb';
 import knexfile from '../knexfile';
 const knex = require('knex')(knexfile.development);
-
-const mongoUrl = 'mongodb://localhost/chatforbis';
 
 module.exports = (io) => {
   var error;
@@ -49,7 +46,7 @@ module.exports = (io) => {
             )
             qb.groupBy('conversations.id')
             qb.where({entity_id: id})
-            // qb.debug(true)
+            qb.debug(true)
           })
           .fetchAll()
           .then(results => {

@@ -1,6 +1,6 @@
 import { SET_DISPLAYED_STAFF } from './types';
 import axios from 'axios';
-const apiServer = 'http://localhost:3003';
+import { apiServer } from './config';
 
 export function putDisplayedStaff(staffList) {
   return {
