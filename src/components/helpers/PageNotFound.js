@@ -26,7 +26,7 @@ class PageNotFound extends Component {
           <h1 className="title">Page not found</h1>
           <p >
 
-              Well, this is embrassing. The path was not found.
+              Well, this is embarassing. The path was not found.
               <br />
               Redirecting in 5 seconds.
               <br />
