@@ -9,7 +9,7 @@ export function putDisplayedStaff(staffList) {
   };
 }
 
-export function setDisplayedStaff(pageNum = 1) {
+export function setDisplayedStaff(pageNum = 0) {
   return dispatch => {
     return axios.get(apiServer + '/api/staff/' + pageNum)
       .then((response) => {

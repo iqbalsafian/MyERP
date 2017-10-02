@@ -16,7 +16,6 @@ require('babel-polyfill');
 const app = require('../app').default;
 const debug = require('debug')('server:server');
 const http = require('http');
-
 /**
  * Normalize a port into a number, string, or false.
  */
@@ -49,8 +48,8 @@ app.set('port', port);
  */
 
 const server = http.createServer(app);
-const io = require('socket.io')(server)
-var chat = require('../utils/chat')(io);
+const io = require('socket.io')(server);
+var chat = require('../utils/chatnew')(io);
 
 /**
  * Listen on provided port, on all network interfaces.

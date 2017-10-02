@@ -1,0 +1,5 @@
+const Staff = `
+  type Staff {
+    
+  }
+`

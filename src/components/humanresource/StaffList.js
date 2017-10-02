@@ -21,7 +21,7 @@ class StaffList extends Component {
   }
 
   showStaffDetails = (staffId) => {
-    const { id, firstname } = this.props.humanresource.staffList.results.find(staff => staff.id === staffId);
+    const { id, firstname } = this.props.humanresource.staffList.staffList.find(staff => staff.id === staffId);
     getStaffById(staffId)
       .then(response => {
         if (response.data)
@@ -51,7 +51,7 @@ class StaffList extends Component {
   componentWillReceiveProps(nextProps) {
     if (
       !(this.props.humanresource.staffList) ||
-      JSON.stringify(this.props.humanresource.staffList.results[0].id) !== JSON.stringify(nextProps.humanresource.staffList.results[0].id)
+      JSON.stringify(this.props.humanresource.staffList.staffList[0].id) !== JSON.stringify(nextProps.humanresource.staffList.staffList[0].id)
     ) {
       this.render()
     }
@@ -74,9 +74,9 @@ class StaffList extends Component {
 
   render() {
     const { staffList = {} } = this.props.humanresource;
-    const { pagination = {} } = staffList;
-    const { results = [] } = staffList;
-    const { pageCount = 0 } = pagination;
+    const { countStaff = 0 } = staffList;
+    const pageCount = Math.round(countStaff / 12);
+
     const theElements = []
     for(let i = 0; i < pageCount; i++) {
       theElements.push({linkTo: '/hr/page/' + (i+1), display: (i+1)})
@@ -87,8 +87,8 @@ class StaffList extends Component {
         Staff List
         <div className="grid-container" style={{overflow:'auto'}}>
           {
-            results ?
-            results.map((staff, key) => {
+            staffList.staffList ?
+            staffList.staffList.map((staff, key) => {
               return (
                 <div key={key} onClick={() => this.showStaffDetails(staff.id)} className="pt-card pt-elevation-1 pt-interactive transparentThis grid-30 card-padding" style={{margin:'10px 10px 0px 10px'}}>
                   <div className="grid-30">

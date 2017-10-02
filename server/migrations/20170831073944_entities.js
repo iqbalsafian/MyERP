@@ -5,7 +5,7 @@ exports.up = function(knex, Promise) {
     table.string('entity_id');
     table.string('parent_id');
     table.string('email').unique().notNullable();
-    table.string('password_digest').notNullable();
+    table.string('password_digest')
     table.string('fullname').notNullable();
     table.string('firstname');
     table.string('lastname');
@@ -22,9 +22,9 @@ exports.up = function(knex, Promise) {
     table.boolean('iscustomer').defaultTo(0);
     table.boolean('issupplier').defaultTo(0);
     table.boolean('isfixedasset').defaultTo(0);
-    table.boolean('isOnline').defaultTo(false);
-    table.boolean('is_allowed_to_login').defaultTo(false);
     table.integer('department_num').defaultTo(0);
+    table.boolean('isonline').defaultTo(false);
+    table.boolean('is_allowed_to_login').defaultTo(false);
     table.timestamp('created_at').notNullable().defaultTo(knex.raw('now()'));
     table.timestamp('updated_at').notNullable().defaultTo(knex.raw('now()'));
   });

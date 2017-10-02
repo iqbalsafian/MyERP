@@ -4,7 +4,6 @@ const bcrypt = require('bcrypt');
 var createDepartment = (knex, id) => {
   return knex('entities').insert({
     fullname: faker.commerce.department(),
-    password_digest: bcrypt.hashSync('password', 10),
     email: faker.internet.email(),
     isdepartment: true
   })

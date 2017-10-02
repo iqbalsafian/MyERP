@@ -7,8 +7,10 @@ import cors from 'cors';
 // import favicon from 'serve-favicon';
 import path from 'path';
 import sassMiddleware from 'node-sass-middleware';
-import index from './routes/index';
-import customer from './routes/customer';
+import index from './routes/index1';
+import index2 from './routes/index2';
+// import customer from './routes/customer';
+import graphql from './routes/graphql';
 // import authorization from './routes/authorization';
 
 const app = express();
@@ -21,7 +23,7 @@ app.set('view engine', 'pug');
 // uncomment after placing your favicon in /public
 // app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
-app.use(cors());
+app.use(cors({ origin: 'http://localhost:3000' , credentials :  true}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: false
@@ -36,8 +38,10 @@ app.use(sassMiddleware({
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
-app.use('/customer', customer);
+// app.use('/', index);
+app.use('/', index2);
+// app.use('/customer', customer);
+app.use('/graphql', graphql);
 // app.use('/login', authorization);
 
 // catch 404 and forward to error handler

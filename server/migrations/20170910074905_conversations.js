@@ -14,6 +14,7 @@ exports.up = function(knex, Promise) {
         .references('conversations.id');
       table.integer('entity_id').unsigned()
         .references('entities.id');
+      table.boolean('isadmin');
       table.timestamp('created_at').notNullable().defaultTo(knex.raw('now()'));
       table.timestamp('updated_at').notNullable().defaultTo(knex.raw('now()'));
     }),
@@ -22,9 +23,12 @@ exports.up = function(knex, Promise) {
       table.increments().primary();
       table.integer('conversation_id').unsigned()
         .references('conversations.id');
+      table.string('message');
+      table.integer('message_type').unsigned();
       table.integer('entity_id').unsigned()
         .references('entities.id');
-      table.string('message');
+        table.integer('target_id').unsigned()
+          .references('entities.id');
       table.timestamp('created_at').notNullable().defaultTo(knex.raw('now()'));
       table.timestamp('updated_at').notNullable().defaultTo(knex.raw('now()'));
     })
