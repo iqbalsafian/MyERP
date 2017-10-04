@@ -21,7 +21,7 @@ class Department extends Component {
   componentWillReceiveProps(nextProps) {
     if (
       !(this.props.humanresource.departmentList) ||
-      JSON.stringify(this.props.humanresource.departmentList[0].id) !== JSON.stringify(nextProps.humanresource.departmentList[0].id)
+      JSON.stringify(this.props.humanresource.departmentList.departments[0].id) !== JSON.stringify(nextProps.humanresource.departmentList.departments[0].id)
     ) {
       this.render()
     }
@@ -52,13 +52,14 @@ class Department extends Component {
 
   render() {
     const { humanresource = {} } = this.props;
-    const { departmentList = [] } = humanresource;
+    const { departmentList = {} } = humanresource;
+    const { departments = [] } = departmentList;
     return(
       <div>
         Department
         <div className="grid-container">
           {
-            departmentList.map((department, key) => {
+            departments.map((department, key) => {
               return (
                 <div key={key} onClick={() => this.showDepartmentDetails(department.id)} className="pt-card pt-elevation-1 pt-interactive transparentThis grid-30 grid-container card-padding" style={{margin:'10px 10px 0px 10px'}}>
                   <div>

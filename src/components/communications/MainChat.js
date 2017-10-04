@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import socketIOClient from 'socket.io-client';
+import { connect } from 'react-redux';
 import { apiServer } from '../../actions/config';
 
 class MainChat extends Component {
@@ -48,9 +49,16 @@ class MainChat extends Component {
                   <img src={require('../../images/REWmEe.jpg')} alt="" height="30" width="30" />
                 </div>
                 <div className="grid-70 leftingText">
-                  {
-                    resp.message.slice(0, 20)
-                  }
+                  <div>
+                    {
+                      (resp.id === this.props.user.id) ? 'You' : resp.e_fullname
+                    }
+                  </div>
+                  <div>
+                    {
+                      resp.message.slice(0, 20)
+                    }
+                  </div>
                 </div>
               </div>
             )
@@ -61,4 +69,10 @@ class MainChat extends Component {
   }
 }
 
-export default MainChat;
+function mapStateToProps(state) {
+  return {
+    user: state.auth.user
+  }
+}
+
+export default connect(mapStateToProps, {})(MainChat);

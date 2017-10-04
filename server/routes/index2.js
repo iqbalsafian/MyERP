@@ -8,6 +8,7 @@ import jwt from 'jsonwebtoken';
 import jwtConfig from '../jwtConfig';
 const router = express.Router();
 const staff = require('./staff')(router);
+const department = require('./department')(router);
 const authentication = require('./authentication')(router);
 
 router.get('/', (req, res, next) => {

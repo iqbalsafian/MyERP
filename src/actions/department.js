@@ -1,6 +1,6 @@
 import { SET_DISPLAYED_DEPARTMENT} from './types';
 import axios from 'axios';
-const apiServer = 'http://localhost:3003';
+import { apiServer } from './config';
 
 export function putDisplayedDepartment(departmentList) {
   return {

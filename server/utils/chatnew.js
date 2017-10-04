@@ -27,8 +27,16 @@ module.exports = (io) => {
       socket.on("displaySnapshot", (data) => {
         socket.emit('reply', [{'message': 'Hoolla'}])
         knex('conversations')
-          .select('conversation_messages.message', 'conversation_messages.updated_at')
-          .leftJoin('conversation_messages', 'conversations.id', 'conversation_messages.conversation_id')
+          .select(
+            'conversation_messages.message',
+            'conversation_messages.updated_at',
+            'conversations.conversation_type',
+            'entities.fullname as e_fullname',
+            'entities.id',
+            'conversations.id as conv_id'
+          )
+          .join('conversation_messages', 'conversations.id', 'conversation_messages.conversation_id')
+          .join('entities', 'conversation_messages.entity_id', 'entities.id')
           .where('conversation_messages.entity_id', id)
           .debug()
           .then(conversations => {

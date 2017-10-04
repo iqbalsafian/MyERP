@@ -21,16 +21,16 @@ class StaffList extends Component {
   }
 
   showStaffDetails = (staffId) => {
-    const { id, firstname } = this.props.humanresource.staffList.staffList.find(staff => staff.id === staffId);
+    const { id, fullname } = this.props.humanresource.staffList.staffList.find(staff => staff.id === staffId);
     getStaffById(staffId)
       .then(response => {
-        if (response.data)
+        if (response.data.staff)
         {
           this.setState({
-            dialogTitle: 'Staff Details Information - ' + firstname,
+            dialogTitle: 'Staff Details Information - ' + fullname,
             selectedStaffId: id,
             isOpen: true,
-            selectedStaff: response.data
+            selectedStaff: response.data.staff[0]
           })
         }
     })
