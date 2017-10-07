@@ -15,7 +15,7 @@ class LeftMenu extends Component {
   };
   render() {
     return(
-      <div className="transparentThis" style={{paddingTop:'15px', paddingLeft: '15px', height: '85vh'}}>
+      <div className="transparentThis cursorPointer" style={{paddingTop:'15px', paddingLeft: '15px', height: '85vh'}}>
         <Accordion>
           <div data-trigger="Human Resource">
             <ul style={{paddingBottom: '10px'}}>
@@ -57,6 +57,36 @@ class LeftMenu extends Component {
                 <NavLink to="/customer">
                   <span className="leftMenuSpan pt-icon-standard pt-icon-home" />
                   Customer List
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/customer/quotation">
+                  <span className="leftMenuSpan pt-icon-standard pt-icon-home" />
+                  Quotation
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/customer/po">
+                  <span className="leftMenuSpan pt-icon-standard pt-icon-home" />
+                  Purchase Order
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/customer/do">
+                  <span className="leftMenuSpan pt-icon-standard pt-icon-home" />
+                  Delivery Order
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/customer/invoice">
+                  <span className="leftMenuSpan pt-icon-standard pt-icon-home" />
+                  Invoice
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/customer/invoice">
+                  <span className="leftMenuSpan pt-icon-standard pt-icon-home" />
+                  Pay Advice
                 </NavLink>
               </li>
             </ul>

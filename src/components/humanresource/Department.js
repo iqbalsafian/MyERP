@@ -19,9 +19,13 @@ class Department extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    console.log(nextProps);
+    const { humanresource = {} } = this.props;
+    const { departmentList = {} } = humanresource;
+    const { departments = [] } = departmentList;
+
     if (
-      !(this.props.humanresource.departmentList) ||
-      JSON.stringify(this.props.humanresource.departmentList.departments[0].id) !== JSON.stringify(nextProps.humanresource.departmentList.departments[0].id)
+      !(this.props.humanresource.departmentList) || JSON.stringify(departments[0].id) !== JSON.stringify(nextProps.humanresource.departmentList.departments[0].id)
     ) {
       this.render()
     }
@@ -32,7 +36,7 @@ class Department extends Component {
   }
 
   showDepartmentDetails = (departmentId) => {
-    const { id } = this.props.humanresource.departmentList.find(department => department.id === departmentId);
+    const { id } = this.props.humanresource.departmentList.departments.find(department => department.id === departmentId);
     getDepartmentById(departmentId)
       .then(response => {
         if (response.data)
