@@ -19,7 +19,7 @@ class Department extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps);
+    // console.log(nextProps);
     const { humanresource = {} } = this.props;
     const { departmentList = {} } = humanresource;
     const { departments = [] } = departmentList;

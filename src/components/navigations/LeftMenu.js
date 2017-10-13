@@ -45,8 +45,8 @@ class LeftMenu extends Component {
               </NavLink>
               <NavLink to="/hr/pa">
                 <li tabIndex="4">
-                    <span className="leftMenuSpan pt-icon-standard pt-icon-home" />
-                    Pay Advice
+                  <span className="leftMenuSpan pt-icon-standard pt-icon-home" />
+                  Pay Advice
                 </li>
               </NavLink>
             </ul>

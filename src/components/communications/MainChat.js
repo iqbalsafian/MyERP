@@ -22,7 +22,7 @@ class MainChat extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log(this.state.response);
+    // console.log(this.state.response);
     if (JSON.stringify(prevState.response) !== JSON.stringify(this.state.response))
       return true;
   }
@@ -46,7 +46,7 @@ class MainChat extends Component {
             return (
               <div key={key} className="pt-callout pt-interactive chatBorder grid-container">
                 <div className="grid-30">
-                  <img src={require('../../images/REWmEe.jpg')} alt="" height="30" width="30" />
+                  <img src={require('../../images/REWmEe.jpg')} alt="" height="30" width="30" style={{borderRadius:'50%'}} />
                 </div>
                 <div className="grid-70 leftingText">
                   <div>
