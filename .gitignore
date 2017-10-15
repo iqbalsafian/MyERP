@@ -1,4 +1,4 @@
 node_modules
 build
 mobile/node_modules
-server/knexfile.js
+server/node_modules
