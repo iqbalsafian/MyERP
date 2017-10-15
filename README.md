@@ -3,7 +3,9 @@
     <p>
         This is a project to inspire small medium businesses to build and manage their own defination of ERP or Business Information System that is light-weight and modular as well.
     </p>
-
+    <div>
+      Demo Apps - <a href="https://bis.iqbal.one" target="_blank" rel="noopener noreferrer">MyERP</a>
+    </div>
 </div>
 <br />
 <div>
