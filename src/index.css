@@ -142,3 +142,12 @@ li:focus {
   background-color: #fff;
   text-align: center;
 }
+
+.white-color {
+  color: white;
+}
+
+.red-color {
+  color: red;
+  text-emphasis-color: red;
+}

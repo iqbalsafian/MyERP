@@ -59,11 +59,12 @@ class LoginForm extends Component {
       password: this.state.password
     }).then((response) => {
       // this.props.setDisplayedStaff();
+      console.log(response);
       if (!response.retStatus) {
         this.setState({ errors: response.errors})
       }
     })
-    this.setState({ disabledSubmit: true });
+    this.setState({ disabledSubmit: false });
   }
 
   render() {
@@ -87,7 +88,7 @@ class LoginForm extends Component {
                     dir="auto"
                     onChange={this.onChange} />
                 </div>
-                <div className="pt-form-helper-text pt-intent-danger">
+                <div className="pt-form-helper-text pt-intent-danger red-color">
                   {
                     this.state.errors.email ? "email is required!" : ""
                   }
@@ -106,9 +107,14 @@ class LoginForm extends Component {
                     dir="auto"
                     onChange={this.onChange} />
                 </div>
-                <div className="pt-form-helper-text pt-intent-danger">
+                <div className="pt-form-helper-text pt-intent-danger red-color">
                   {
                     this.state.errors.password ? "password is required!" : ""
+                  }
+                </div>
+                <div className="pt-form-helper-text pt-intent-danger red-color">
+                  {
+                    this.state.errors.errors ? this.state.errors.errors : ''
                   }
                 </div>
                 <div>&nbsp;</div>

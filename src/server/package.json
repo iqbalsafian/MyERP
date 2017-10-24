@@ -38,7 +38,7 @@
     "sequelize": "^4.10.2",
     "serve-favicon": "~2.3.2",
     "socket.io": "^2.0.3",
-    "validator": "^8.0.0"
+    "validator": "^9.1.0"
   },
   "devDependencies": {
     "babel-eslint": "^7.1.1",

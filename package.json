@@ -31,7 +31,8 @@
     "redux-devtools-extension": "^2.13.2",
     "redux-thunk": "^2.2.0",
     "socket.io-client": "^2.0.3",
-    "switch-css-transition-group": "^0.1.2"
+    "switch-css-transition-group": "^0.1.2",
+    "validator": "^9.1.0"
   },
   "scripts": {
     "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
