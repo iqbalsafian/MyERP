@@ -11,7 +11,7 @@ class Graph extends Component {
               {name: 'Page F', uv: 1400, pv: 680, amt: 1700}];
     return(
       <div id="container" className="centeringText">
-        <ComposedChart width={500} height={270} data={data}
+        <ComposedChart width={700} height={270} data={data}
             margin={{top: 20, right: 20, bottom: 20, left: 20}}>
           <XAxis dataKey="name"/>
           <YAxis />
