@@ -51,9 +51,13 @@ class TopNavigation extends Component {
     )
   }
 
+  enterSearchMode() {
+    alert('You press enter!');
+  }
+
   checkEnterKey(e) {
     if (e.keyCode === 13) {
-      alert('You press enter!');
+      this.enterSearchMode();
     }
   }
 
@@ -70,7 +74,7 @@ class TopNavigation extends Component {
               </div>
               <div className="pt-input-group">
                 <input className="pt-input" type="search" onKeyDown={this.checkEnterKey} placeholder="Search" dir="auto" size="25" />
-                <span className="pt-icon pt-icon-search" style={{cursor:'pointer'}}></span>
+                <span className="pt-icon pt-icon-search" style={{cursor:'pointer'}} onClick={this.enterSearchMode}></span>
               </div>
             </div>
             <div className="pt-navbar-group pt-align-right">
