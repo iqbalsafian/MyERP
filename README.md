@@ -5,6 +5,8 @@
     </p>
     <div>
       Demo Apps - <a href="https://bis.iqbal.one" target="_blank" rel="noopener noreferrer">MyERP</a>
+      <br />
+      For demo purposes, please use Ezekiel.Botsford73@hotmail.com for email and password as password
     </div>
 </div>
 <br />
