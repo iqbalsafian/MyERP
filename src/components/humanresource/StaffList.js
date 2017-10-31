@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { setDisplayedStaff, getStaffById } from '../../actions/staffInformation';
-import { Button, Dialog, Intent, Hotkey, Hotkeys, HotkeysTarget } from "@blueprintjs/core";
+import { Dialog, Hotkey, Hotkeys, HotkeysTarget
+  // Button, Intent,
+} from "@blueprintjs/core";
 import StaffDetails from './StaffDetails';
 import NewStaffForm from './NewStaffForm';
 import Pagination from '../helpers/Pagination'

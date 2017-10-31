@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Button
-  // Dialog, Intent, Hotkey, Hotkeys, HotkeysTarget
+import {
+  // Button, Dialog, Intent, Hotkey, Hotkeys, HotkeysTarget
 } from "@blueprintjs/core";
 
 export default class CustomerList extends Component {

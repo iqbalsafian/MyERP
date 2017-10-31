@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Button, Dialog, Intent } from "@blueprintjs/core";
+import { Dialog
+  // , Button,  Intent 
+} from "@blueprintjs/core";
 import { setDisplayedDepartment, getDepartmentById } from '../../actions/department';
 import DepartmentDetails from './DepartmentDetails';
 import NewDepartmentForm from './NewDepartmentForm';

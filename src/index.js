@@ -10,7 +10,7 @@ import registerServiceWorker from './registerServiceWorker';
 import setAuthorizationToken from './utils/setAuthorizationToken';
 import jwtDecode from 'jwt-decode';
 import { setCurrentUser } from './actions/userAuthentication';
-import { setDisplayedStaff } from './actions/staffInformation';
+// import { setDisplayedStaff } from './actions/staffInformation';
 
 const store = createStore(
   rootReducer,
