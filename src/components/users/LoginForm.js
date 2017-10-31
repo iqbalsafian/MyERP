@@ -59,7 +59,7 @@ class LoginForm extends Component {
       password: this.state.password
     }).then((response) => {
       // this.props.setDisplayedStaff();
-      console.log(response);
+      // console.log(response);
       if (!response.retStatus) {
         this.setState({ errors: response.errors})
       }
