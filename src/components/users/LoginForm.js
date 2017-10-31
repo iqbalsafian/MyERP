@@ -77,6 +77,10 @@ class LoginForm extends Component {
                 <div style={{paddingBottom:'15px'}}>
                   MyERP
                 </div>
+                <div className="pt-callout pt-intent-primary">
+                  For demo purposes please use Ezekiel.Botsford73@hotmail.com as email and password as password.
+                </div>
+                <br />
                 <div className={classNames('pt-input-group')}>
                   <input
                     id="email"
@@ -90,7 +94,7 @@ class LoginForm extends Component {
                 </div>
                 <div className="pt-form-helper-text pt-intent-danger red-color">
                   {
-                    this.state.errors.email ? "email is required!" : ""
+                    this.state.errors.email ? <div className="pt-callout pt-intent-danger defaultTextColor">Email is required!</div> : ""
                   }
                 </div>
 
@@ -109,12 +113,12 @@ class LoginForm extends Component {
                 </div>
                 <div className="pt-form-helper-text pt-intent-danger red-color">
                   {
-                    this.state.errors.password ? "password is required!" : ""
+                    this.state.errors.password ? <div className="pt-callout pt-intent-danger defaultTextColor">Password is required!</div> : ""
                   }
                 </div>
                 <div className="pt-form-helper-text pt-intent-danger red-color">
                   {
-                    this.state.errors.errors ? this.state.errors.errors : ''
+                    this.state.errors.errors ? <div className="pt-callout pt-intent-danger defaultTextColor">{this.state.errors.errors}</div> : ''
                   }
                 </div>
                 <div>&nbsp;</div>
@@ -122,7 +126,6 @@ class LoginForm extends Component {
                   <Button
                     className={classNames('.pt-intent-primary', {'pt-disabled': this.state.disabledSubmit})}
                     text="Submit" onClick={this.handleSubmit} />
-
                 </div>
               </div>
             </div>

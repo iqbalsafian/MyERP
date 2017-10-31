@@ -39,11 +39,8 @@ module.exports = (router) => {
           'isstaff': true
         })
         .then(staff => {
-          if (staff !== null) {
-            console.log(staff[0].password_digest);
-            // bcrypt.compare(password, staff.password_digest).then(res => {
-            //
-            // })
+          if (staff.length) {
+            console.log(staff);
             if (bcrypt.compareSync(password, staff[0].password_digest)) {
               const token = jwt.sign({ id: staff[0].id, email:email }, jwtConfig.jwtSecret);
               res.status(200).json({'statuscode':'200', token});
