@@ -91,7 +91,6 @@ class LoginForm extends Component {
                     placeholder="Your email"
                     dir="auto"
                     onChange={this.onChange}
-                    value="Ezekiel.Botsford73@hotmail.com"
                    />
                 </div>
                 <div className="pt-form-helper-text pt-intent-danger red-color">
@@ -111,8 +110,7 @@ class LoginForm extends Component {
                     style={{width: '300px', textAlign:'center'}}
                     placeholder="Your password"
                     dir="auto"
-                    onChange={this.onChange}
-                    value="password" />
+                    onChange={this.onChange} />
                 </div>
                 <div className="pt-form-helper-text pt-intent-danger red-color">
                   {
