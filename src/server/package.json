@@ -37,7 +37,7 @@
     "pug": "^2.0.0-beta11",
     "sequelize": "^4.10.2",
     "serve-favicon": "~2.3.2",
-    "socket.io": "^2.0.3",
+    "socket.io": "^2.4.0",
     "validator": "^9.1.0"
   },
   "devDependencies": {
