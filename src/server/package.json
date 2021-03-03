@@ -34,7 +34,7 @@
     "passport": "^0.4.0",
     "pg": "^7.3.0",
     "pg-hstore": "^2.3.2",
-    "pug": "^2.0.0-beta11",
+    "pug": "^3.0.1",
     "sequelize": "^4.10.2",
     "serve-favicon": "~2.3.2",
     "socket.io": "^2.0.3",
