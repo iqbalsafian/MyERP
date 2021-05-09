@@ -9,7 +9,7 @@
     "classnames": "^2.2.6",
     "history": "^4.6.3",
     "jwt-decode": "^2.2.0",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.21",
     "node-sass-chokidar": "^0.0.3",
     "prop-types": "^15.5.10",
     "rc-pagination": "^1.12.1",
